@@ -10,10 +10,17 @@
   // Container for Logo and Menu Icon
   &__container {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem;
     z-index: 10;
+  }
+
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 
   // Logo
@@ -22,19 +29,25 @@
     height: 9rem; /* Prevent layout shift */
     display: block;
     background-color: #f0f0f0; /* Placeholder for loading */
+    margin-right: 4rem;
   }
 
   // Hamburger Menu Icon
   &__menu-icon {
     font-size: 2rem;
     cursor: pointer;
-    display: block;
+    // display: block;
     z-index: 15;
 
     // Hide the menu icon for desktop
     @include desktop {
       display: none;
     }
+  }
+
+  &__shopping-cart {
+    font-size: 2rem;
+    cursor: pointer;
   }
 
   // Navigation Menu
