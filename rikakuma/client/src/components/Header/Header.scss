@@ -1,0 +1,96 @@
+@use "../../styles/partials/mixins" as *;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  background-color: #d7caf1;
+  color: white;
+  position: relative;
+
+  // Container for Logo and Menu Icon
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    z-index: 10;
+  }
+
+  // Logo
+  &__logo {
+    width: 9rem;
+    height: 9rem; /* Prevent layout shift */
+    display: block;
+    background-color: #f0f0f0; /* Placeholder for loading */
+  }
+
+  // Hamburger Menu Icon
+  &__menu-icon {
+    font-size: 2rem;
+    cursor: pointer;
+    display: block;
+    z-index: 15;
+
+    // Hide the menu icon for desktop
+    @include desktop {
+      display: none;
+    }
+  }
+
+  // Navigation Menu
+  &__nav {
+    display: none;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+
+    &--open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: #d7caf1;
+      justify-content: center;
+      align-items: center;
+      z-index: 5;
+    }
+
+    &-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+
+      @include desktop {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 3rem;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &__item {
+        margin: 1rem 0;
+
+        a {
+          text-decoration: none;
+          color: white;
+          font-size: 1.2rem;
+          transition: color 0.3s ease-in-out;
+
+          &:hover {
+            color: #00bcd4;
+          }
+        }
+      }
+    }
+
+    @include desktop {
+      display: flex;
+      position: static;
+      flex-direction: row;
+    }
+  }
+}
