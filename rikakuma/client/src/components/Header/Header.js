@@ -41,24 +41,16 @@ const Header = () => {
       <nav className={`header__nav ${isMenuOpen ? "header__nav--open" : ""}`}>
         <ul className="header__nav-list">
           <li className="header__nav-item">
-            <a href="#home" onClick={toggleMenu}>
-              Home
-            </a>
+            <a href="/">Home</a>
           </li>
           <li className="header__nav-item">
-            <a href="#shop" onClick={toggleMenu}>
-              Shop
-            </a>
+            <a href="#shop">Shop</a>
           </li>
           <li className="header__nav-item">
-            <a href="#about" onClick={toggleMenu}>
-              About
-            </a>
+            <a href="#about">About</a>
           </li>
           <li className="header__nav-item">
-            <a href="#contact" onClick={toggleMenu}>
-              Contact
-            </a>
+            <a href="#contact">Contact</a>
           </li>
         </ul>
       </nav>
