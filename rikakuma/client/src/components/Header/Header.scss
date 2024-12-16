@@ -20,7 +20,10 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-around;
+    @include desktop {
+      justify-content: center;
+    }
   }
 
   // Logo
@@ -29,7 +32,10 @@
     height: 9rem; /* Prevent layout shift */
     display: block;
     background-color: #f0f0f0; /* Placeholder for loading */
-    margin-right: 4rem;
+    @include desktop {
+      width: 18rem;
+      height: 18rem;
+    }
   }
 
   // Hamburger Menu Icon
