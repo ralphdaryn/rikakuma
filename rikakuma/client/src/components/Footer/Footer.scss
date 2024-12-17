@@ -1,0 +1,12 @@
+@use "../../styles/partials/mixins" as *;
+
+.footer {
+  color: white;
+  &__container {
+    background-color: #d7caf1;
+    height: 8rem;
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem;
+  }
+}
