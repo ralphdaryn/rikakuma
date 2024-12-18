@@ -1,0 +1,17 @@
+@use "../../styles/partials/mixins" as *;
+
+.hero {
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+  &__image {
+    width: 100%;
+    @include tablet {
+      width: 30rem;
+    }
+  }
+}
