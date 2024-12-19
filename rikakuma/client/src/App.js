@@ -11,8 +11,8 @@ const App = () => {
       <div className="background">
         <Hero />
         <Card />
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 };
