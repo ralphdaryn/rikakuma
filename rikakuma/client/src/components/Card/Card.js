@@ -5,7 +5,7 @@ import keychainImg from "../../assets/images/keychain.png";
 const Card = () => {
   return (
     <div className="card">
-      <div className="card__container">
+      <div className="card__container card__container-welcome">
         <div className="card__wrapper">
           <h3 className="card__title">Welcome!</h3>
           <p className="card__subtitle">Thank you for visiting!</p>
@@ -35,7 +35,7 @@ const Card = () => {
             <img
               className="card__image"
               src={keychainImg}
-              alt="sticker pic"
+              alt="keychain pic"
             ></img>
           </div>
         </div>
@@ -43,4 +43,5 @@ const Card = () => {
     </div>
   );
 };
+
 export default Card;
