@@ -7,7 +7,7 @@ const Card = () => {
     <div className="card">
       <div className="card__container">
         <div className="card__wrapper">
-          <h4 className="card__title">Welcome!</h4>
+          <h3 className="card__title">Welcome!</h3>
           <p className="card__subtitle">Thank you for visiting!</p>
         </div>
         <div className="card__button">Shop All</div>
@@ -22,14 +22,14 @@ const Card = () => {
             ></img>
           </div>
           <h3 className="card__title">Featured Items:</h3>
-          <p className="card__title">Stickers!</p>
+          <p className="card__subtitle">Stickers!</p>
           <div className="card__button">Shop</div>
         </div>
       </div>
       <div className="card__container">
         <div className="card__wrapper">
           <h3 className="card__title">Featured Items:</h3>
-          <p className="card__title">Key Chains!</p>
+          <p className="card__subtitle">Key Chains!</p>
           <div className="card__button">Shop</div>
           <div className="card__image-container">
             <img
