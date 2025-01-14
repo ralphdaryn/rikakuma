@@ -12,6 +12,7 @@
     width: 100%;
     @include tablet {
       width: 30rem;
+      border-radius: 2rem;
     }
   }
 }
