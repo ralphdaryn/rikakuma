@@ -18,8 +18,11 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-
+    justify-content: space-between;
+    padding: 1rem;
+    @include tablet {
+      padding: 1rem 2rem;
+    }
     @include desktop {
       justify-content: center;
     }
@@ -81,14 +84,14 @@
       @include desktop {
         flex-direction: row;
         justify-content: center;
-        gap: 2rem;
+        gap: 4rem;
         margin: 0;
         align-items: center;
+        padding-bottom: 1rem;
       }
 
       &__item {
         margin: 0;
-
 
         a {
           text-decoration: none;
