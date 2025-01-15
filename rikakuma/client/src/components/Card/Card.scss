@@ -26,15 +26,23 @@
     border-radius: 2rem;
 
     &-welcome {
+      max-width: 25rem;
       @include tablet {
         order: 0; /* Center the welcome card on top */
         flex: 1 1 100%; /* Full width for welcome card */
         justify-content: center;
         align-items: center;
-        margin: 0 14rem;
-        @include desktop {
-          margin: 0 20rem;
-        }
+      }
+      @include desktop {
+        margin: 0 22rem;
+      }
+    }
+
+    &-feature {
+      @include tablet {
+        display: flex;
+        flex-direction: row;
+        gap: 3rem;
       }
     }
 
