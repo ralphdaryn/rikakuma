@@ -5,12 +5,23 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding: 1rem;
-  margin: 1rem;
+  padding: 2rem;
+  background-color: #f9f9f9;
+
+  &__intro {
+    text-align: center;
+  }
 
   &__heading {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  &__description {
+    font-size: 1.2rem;
+    color: #555;
+    text-align: center;
   }
 
   &__form {
@@ -23,14 +34,17 @@
 
   &__label {
     font-size: 1rem;
+    font-weight: bold;
+    color: #333;
   }
 
   &__input,
   &__textarea {
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.75rem;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 1rem;
   }
 
   &__textarea {
@@ -46,9 +60,44 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
-
+    margin-top: 1rem;
     &:hover {
       background-color: #c8b0f1;
+    }
+  }
+
+  &__info {
+    text-align: center;
+
+    &__subheading {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    &__text {
+      font-size: 1rem;
+      color: #555;
+    }
+  }
+
+  &__socials {
+    text-align: center;
+
+    &__subheading {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    &__social-link {
+      font-size: 1rem;
+      color: #5a3e79;
+      text-decoration: none;
+      margin: 0 0.5rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

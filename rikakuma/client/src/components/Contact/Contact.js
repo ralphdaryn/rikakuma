@@ -3,7 +3,14 @@ import "./Contact.scss";
 const Contact = () => {
   return (
     <div className="contact">
-      <span className="contact__heading">Contact Us</span>
+      <div className="contact__intro">
+        <h1 className="contact__heading">Contact Us</h1>
+        <div className="contact__info">
+      </div>
+        <p className="contact__description">
+          Have questions?<br></br> We're here to help!
+        </p>
+      </div>
       <form className="contact__form">
         <label htmlFor="name" className="contact__label">
           Name:
@@ -26,7 +33,6 @@ const Contact = () => {
           className="contact__input"
           required
         />
-
         <label htmlFor="message" className="contact__label">
           Message:
         </label>

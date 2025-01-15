@@ -1,12 +1,38 @@
 @use "../../styles/partials/mixins" as *;
 
 .footer {
-  color: white;
+  color: #333;
+  background-color: #d7caf1;
+  padding: 1rem 0;
+
   &__container {
-    background-color: #d7caf1;
-    height: 8rem;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
     padding: 1rem;
+  }
+
+  &__info {
+    text-align: center;
+  }
+
+  &__subheading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  &__text {
+    font-size: 1rem;
+    margin: 0.25rem 0;
+  }
+
+  &__link {
+    color: #fff;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 }

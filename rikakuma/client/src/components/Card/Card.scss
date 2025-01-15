@@ -6,7 +6,7 @@
   align-items: center;
   color: #fff;
   @include tablet {
-    gap: 5rem;
+    gap: 2rem;
   }
 
   @include tablet {
@@ -38,7 +38,7 @@
         justify-content: center;
         align-items: center;
         margin-top: -8rem;
-        margin: 0 4rem;
+        margin: 0 6rem;
       }
       @include desktop {
         margin: 0 22rem;
