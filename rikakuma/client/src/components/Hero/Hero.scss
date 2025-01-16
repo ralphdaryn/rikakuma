@@ -13,19 +13,23 @@
       #fed4f8 10%,
       #fff 100%
     );
-    /* Gradient goes from lighter pink (50% opacity) at the top 
-       to solid pink (#fed4f8) in the middle, and fades to white at the bottom */
-
     @include tablet {
-      padding: 2rem;
+      padding: 3rem;
+    }
+    @include desktop {
+      margin-top: -4rem;
+      padding: 4rem 6rem;
     }
   }
 
   &__image {
     width: 100%;
     @include tablet {
-      width: 100%;
       border-radius: 2rem;
+      width: 80%;
+    }
+    @include desktop {
+      width: 65%;
     }
   }
 }

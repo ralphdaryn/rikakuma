@@ -15,24 +15,25 @@
 
   &__icon {
     position: absolute;
-    left: 1rem;
-    fill: #9e9ea7; /* Same color for the icon */
-    width: 1rem;
-    height: 1rem;
+    left: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: #333; 
   }
 
   &__input {
     width: 100%;
     height: 40px;
     line-height: 28px;
-    padding: 0 1rem;
-    padding-left: 2.5rem; /* Space for the icon */
+    padding: 1.5rem;
+    padding-left: 4rem; /* Space for the icon */
     border: 2px solid transparent;
     border-radius: 8px;
     outline: none;
     background-color: #f3f3f4; /* Original input background color */
     color: #0d0c22; /* Original text color */
     transition: 0.3s ease;
+    font-size: 1.25rem;
 
     &::placeholder {
       color: #9e9ea7; /* Original placeholder color */
