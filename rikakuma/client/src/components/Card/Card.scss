@@ -5,8 +5,10 @@
   flex-direction: column;
   align-items: center;
   color: #fff;
+  margin-top: -4rem;
   @include tablet {
     gap: 2rem;
+    margin-top: -3rem;
   }
 
   @include tablet {
@@ -52,8 +54,8 @@
       @include tablet {
         overflow: hidden;
         flex-direction: row;
-        gap: 0;
-        margin: 0;
+        gap: 2rem;
+        margin-bottom: 2rem;
       }
     }
 

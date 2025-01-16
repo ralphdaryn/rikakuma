@@ -18,13 +18,31 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* Default for mobile and tablet */
     padding: 1rem;
+
     @include tablet {
       padding: 1rem 2rem;
     }
+
     @include desktop {
-      justify-content: center;
+      justify-content: center; /* Center content in desktop */
+      position: relative; /* Allow absolute positioning for menu/cart */
+      padding: 1rem 5rem;
+    }
+
+    & > .header__menu-icon {
+      @include desktop {
+        position: absolute;
+        left: 1rem; /* Position menu icon on the far left */
+      }
+    }
+
+    & > .header__shopping-bag {
+      @include desktop {
+        position: absolute;
+        right: 1rem; /* Position shopping cart on the far right */
+      }
     }
   }
 
@@ -33,10 +51,11 @@
     width: 8rem;
     height: 8rem; /* Prevent layout shift */
     display: block;
-    background-color: #f0f0f0; /* Placeholder for loading */
+
     @include desktop {
       width: 12rem;
       height: 12rem;
+      margin: 0 auto; /* Center logo horizontally */
     }
   }
 
@@ -52,9 +71,13 @@
     }
   }
 
-  &__shopping-cart {
+  &__shopping-bag {
     font-size: 2rem;
     cursor: pointer;
+    @include desktop {
+      font-size: 3rem;
+      padding-right: 5rem;
+    }
   }
 
   // Navigation Menu

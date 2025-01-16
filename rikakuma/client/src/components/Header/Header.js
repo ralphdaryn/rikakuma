@@ -1,7 +1,7 @@
 import "./Header.scss";
 import { useState } from "react";
 import logo from "../../assets/images/rikakumalogo.jpeg";
-import { FaBars, FaTimes, FaShoppingCart } from "react-icons/fa";
+import { FaBars, FaTimes, FaShoppingBag } from "react-icons/fa";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,8 +31,8 @@ const Header = () => {
               loading="eager" // Prioritize loading of the logo
             />
           </a>
-          <div className="header__shopping-cart">
-            <FaShoppingCart />
+          <div className="header__shopping-bag">
+            <FaShoppingBag />
           </div>
         </div>
       </div>

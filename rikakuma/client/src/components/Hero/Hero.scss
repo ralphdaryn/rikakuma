@@ -7,14 +7,24 @@
     align-items: center;
     padding: 0;
     margin: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(254, 212, 248, 0.5),
+      #fed4f8 10%,
+      #fff 100%
+    );
+    /* Gradient goes from lighter pink (50% opacity) at the top 
+       to solid pink (#fed4f8) in the middle, and fades to white at the bottom */
+
     @include tablet {
       padding: 2rem;
     }
   }
+
   &__image {
     width: 100%;
     @include tablet {
-      width: 30rem;
+      width: 100%;
       border-radius: 2rem;
     }
   }
