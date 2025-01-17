@@ -1,20 +1,26 @@
 import "./Footer.scss";
+import { FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__container">
         <div className="footer__info">
-          <h2 className="footer__subheading">Get in Touch</h2>
+          <h2 className="footer__subheading">Get In Touch!</h2>
           <p className="footer__text">
-            Email:{" "}
-            <a href="mailto:info@shopifystore.com" className="footer__link">
-              info@shopifystore.com
-            </a>
+            Stay connected with our latest products, updates and events!
           </p>
-          <p className="footer__text">Phone: (123) 456-7890</p>
-          <p className="footer__text">
-            Address: 123 Sticker Lane, Keychain City
+          <a
+            href="https://www.instagram.com/rikakuma.ca/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer__link"
+            aria-label="Visit our Instagram page"
+          >
+            <FaInstagram className="footer__icon" /> @rikakuma.ca
+          </a>
+          <p className="footer__text footer__copyright">
+            © 2025 Rikakuma. All rights reserved.
           </p>
         </div>
       </div>

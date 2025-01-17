@@ -1,9 +1,7 @@
-@use "../../styles/partials/mixins" as *;
-
 .footer {
   color: #333;
   background-color: #d7caf1;
-  padding: 1rem 0;
+  padding: 2rem 0;
 
   &__container {
     display: flex;
@@ -20,19 +18,35 @@
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
+    color: #5a2d82;
   }
 
   &__text {
     font-size: 1rem;
-    margin: 0.25rem 0;
+    margin: 0.5rem 0;
   }
 
   &__link {
-    color: #fff;
-    text-decoration: underline;
+    color: #6a1b9a; /* Instagram branding */
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
 
     &:hover {
-      text-decoration: none;
+      color: #a864c1; /* Softer purple on hover */
+      text-decoration: underline;
     }
+  }
+
+  &__icon {
+    font-size: 1.5rem;
+  }
+
+  &__copyright {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #555;
   }
 }
