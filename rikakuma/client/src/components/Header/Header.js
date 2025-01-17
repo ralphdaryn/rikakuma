@@ -1,7 +1,7 @@
 import "./Header.scss";
 import { useState } from "react";
 import logo from "../../assets/images/rikakumalogo.jpeg";
-import { FaBars, FaTimes, FaShoppingBag } from "react-icons/fa";
+import { FaBars, FaTimes, FaShoppingBag, FaHome, FaInfoCircle, FaEnvelope, FaShoppingCart } from "react-icons/fa";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,16 +41,24 @@ const Header = () => {
       <nav className={`header__nav ${isMenuOpen ? "header__nav--open" : ""}`}>
         <ul className="header__nav-list">
           <li className="header__nav-item">
-            <a href="/">Home</a>
+            <a href="/">
+              <FaHome /> Home
+            </a>
           </li>
           <li className="header__nav-item">
-            <a href="#shop">Shop</a>
+            <a href="#shop">
+              <FaShoppingCart /> Shop
+            </a>
           </li>
           <li className="header__nav-item">
-            <a href="#about">About</a>
+            <a href="#about">
+              <FaInfoCircle /> About
+            </a>
           </li>
           <li className="header__nav-item">
-            <a href="#contact">Contact</a>
+            <a href="#contact">
+              <FaEnvelope /> Contact
+            </a>
           </li>
         </ul>
       </nav>
@@ -59,3 +67,4 @@ const Header = () => {
 };
 
 export default Header;
+
