@@ -6,9 +6,6 @@ server/node_modules/
 client/build/
 server/dist/
 
-# Cache files
-**/.cache/
-
 # Environment variables
 client/.env
 server/.env
