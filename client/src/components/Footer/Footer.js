@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="footer__info">
           <h2 className="footer__subheading">Get In Touch!</h2>
           <p className="footer__text">
-            Stay connected with our latest products, updates and events!
+            Stay connected with our latest updates and future events!
           </p>
           <a
             href="https://www.instagram.com/rikakuma.ca/"
