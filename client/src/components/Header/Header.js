@@ -10,19 +10,26 @@ import {
   FaEnvelope,
   FaShoppingCart,
 } from "react-icons/fa";
-import { Link } from "react-scroll";
+import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ onContactClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen((prevState) => !prevState);
   };
 
+  const handleContactClick = () => {
+    navigate("/"); // Navigate to the Home page
+    setTimeout(() => {
+      onContactClick(); // Scroll to the contact section
+    }, 100); // Add a small delay to ensure navigation is complete
+  };
+
   return (
     <div className="header">
       <div className="header__container">
-        {/* Hamburger Menu Icon */}
         <div className="header__wrapper">
           <div
             className="header__menu-icon"
@@ -31,48 +38,48 @@ const Header = () => {
           >
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </div>
-          {/* Logo */}
-          <a href="/">
+          <div>
             <img
               className="header__logo"
               src={logo}
               alt="Rikakuma Logo"
-              loading="eager" // Prioritize loading of the logo
+              loading="eager"
             />
-          </a>
+          </div>
           <div className="header__shopping-bag">
             <FaShoppingBag />
           </div>
         </div>
       </div>
 
-      {/* Navigation Menu */}
       <nav className={`header__nav ${isMenuOpen ? "header__nav--open" : ""}`}>
         <ul className="header__nav-list">
           <li className="header__nav-list__item">
-            <a className="header__navlink" href="/">
+            <span className="header__navlink" onClick={() => navigate("/")}>
               <FaHome /> Home
-            </a>
+            </span>
           </li>
           <li className="header__nav-list__item">
-            <a className="header__navlink" href="#shop">
+            <span className="header__navlink" onClick={() => navigate("/shop")}>
               <FaShoppingCart /> Shop
-            </a>
+            </span>
           </li>
           <li className="header__nav-list__item">
-            <a className="header__navlink" href="#about">
-              <FaInfoCircle /> About
-            </a>
-          </li>
-          <li className="header__nav-list__item">
-            <Link
+            <span
               className="header__navlink"
-              to="contact"
-              smooth={true}
-              duration={500}
+              onClick={() => navigate("/about")}
+            >
+              <FaInfoCircle /> About
+            </span>
+          </li>
+          <li className="header__nav-list__item">
+            <span
+              className="header__navlink"
+              onClick={handleContactClick}
+              style={{ cursor: "pointer" }}
             >
               <FaEnvelope /> Contact
-            </Link>
+            </span>
           </li>
         </ul>
       </nav>
