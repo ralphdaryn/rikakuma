@@ -10,6 +10,7 @@ import {
   FaEnvelope,
   FaShoppingCart,
 } from "react-icons/fa";
+import { Link } from "react-scroll";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -64,9 +65,14 @@ const Header = () => {
             </a>
           </li>
           <li className="header__nav-list__item">
-            <a className="header__navlink" href="#contact">
+            <Link
+              className="header__navlink"
+              to="contact"
+              smooth={true}
+              duration={500}
+            >
               <FaEnvelope /> Contact
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

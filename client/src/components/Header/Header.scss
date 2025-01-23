@@ -122,6 +122,7 @@
           text-decoration: none;
           color: white;
           transition: color 0.3s ease; /* Smooth hover effect */
+          cursor: pointer;
 
           @include desktop {
             font-size: 1.55rem;
