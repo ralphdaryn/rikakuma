@@ -48,22 +48,22 @@ const Header = () => {
       {/* Navigation Menu */}
       <nav className={`header__nav ${isMenuOpen ? "header__nav--open" : ""}`}>
         <ul className="header__nav-list">
-          <li className="header__nav-item">
+          <li className="header__nav-list__item">
             <a className="header__navlink" href="/">
               <FaHome /> Home
             </a>
           </li>
-          <li className="header__nav-item">
+          <li className="header__nav-list__item">
             <a className="header__navlink" href="#shop">
               <FaShoppingCart /> Shop
             </a>
           </li>
-          <li className="header__nav-item">
+          <li className="header__nav-list__item">
             <a className="header__navlink" href="#about">
               <FaInfoCircle /> About
             </a>
           </li>
-          <li className="header__nav-item">
+          <li className="header__nav-list__item">
             <a className="header__navlink" href="#contact">
               <FaEnvelope /> Contact
             </a>
