@@ -31,7 +31,9 @@ const Card = () => {
         <div className="card__container">
           <div className="card__wrapper">
             <h3 className="card__title">Featured Items:</h3>
-            <p className="card__subtitle">Key Chains!</p>
+            <p className="card__subtitle">
+              Charms (Key Chains)
+            </p>
             <div className="card__button">Shop</div>
             <div className="card__image-container">
               <img
