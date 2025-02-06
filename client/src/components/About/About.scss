@@ -1,5 +1,48 @@
 @use "../../styles/partials/mixins" as *;
 
 .about {
-  height: 60vh;
+  height: 61vh;
+  padding: 1rem;
+  @include tablet {
+    margin: 0 10rem;
+  }
+  @include desktop {
+    margin: 0 20rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-family: "Nunito-Bold";
+  }
+}
+
+.faq-item {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+
+  .faq-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .faq-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 1rem;
+  }
+
+  .about__subtext {
+    padding-top: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+  }
 }

@@ -69,7 +69,7 @@ const Header = ({ onContactClick }) => {
               className="header__navlink"
               onClick={() => navigate("/about")}
             >
-              <FaInfoCircle /> About
+              <FaInfoCircle /> Information
             </span>
           </li>
           <li className="header__nav-list__item">
