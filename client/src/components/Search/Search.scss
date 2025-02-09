@@ -5,6 +5,7 @@
   align-items: center;
   position: relative;
   line-height: 28px;
+
   @include desktop {
     position: relative;
     top: -173px;
@@ -18,7 +19,7 @@
     left: 1.5rem;
     width: 1.5rem;
     height: 1.5rem;
-    fill: #333; 
+    fill: #333;
   }
 
   &__input {
@@ -46,5 +47,57 @@
       background-color: #fff; /* White background on hover/focus */
       box-shadow: 0 0 0 4px rgba(234, 76, 137, 0.1); /* Subtle pink glow */
     }
+  }
+
+  &__loading {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    font-size: 0.9rem;
+    color: #777;
+  }
+
+  &__results {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-height: 250px;
+    overflow-y: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    padding: 0.5rem;
+  }
+
+  &__result-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      background: #f9f9f9;
+    }
+
+    img {
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+  }
+
+  &__result-title {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  &__result-price {
+    font-size: 0.9rem;
+    color: #555;
   }
 }
