@@ -6,7 +6,7 @@ import Card from "../src/components/Card/Card";
 import About from "../src/components/About/About";
 import Contact from "../src/components/Contact/Contact";
 import Search from "../src/components/Search/Search";
-import Shop from "../src/components/Shop/Shop"; 
+import Shop from "../src/components/Shop/Shop";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useRef } from "react";
 
@@ -36,7 +36,7 @@ const App = () => {
                 </>
               }
             />
-            <Route path="/shop" element={<Shop />} />{" "}
+            <Route path="/shop" element={<Shop />} />
             <Route path="/about" element={<About />} />{" "}
           </Routes>
           <Footer />
