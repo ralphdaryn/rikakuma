@@ -9,7 +9,7 @@ const Card = () => {
       <div className="card__container card__container-welcome">
         <div className="card__wrapper">
           <h3 className="card__title">Welcome!</h3>
-          <p className="card__subtitle">Thanks for visiting!!!</p>
+          <p className="card__subtitle">Thanks for visiting!</p>
         </div>
         <Link to="/shop" className="card__button">
           Shop All
