@@ -13,13 +13,15 @@ const Shop = () => {
       setLoading(true);
       try {
         const data = await fetchProducts();
-        console.log("Fetched Products:", data); // Debugging Step
+        console.log("✅ Fetched Products:", data);
+
         if (!data || data.length === 0) {
           console.warn("⚠️ No products found in API response.");
         }
-        setProducts(data || []); // Ensure an empty array is set if data is null
+
+        setProducts(data || []);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error("🔥 Error fetching products:", error);
       } finally {
         setLoading(false);
       }
@@ -30,14 +32,16 @@ const Shop = () => {
 
   const handleCheckout = async (variantId) => {
     if (!variantId) {
-      console.error("No variant ID found for product.");
+      console.error("❌ No variant ID found for product.");
+      alert("Error: No variant ID found for this product.");
       return;
     }
     setCheckoutLoading(variantId);
     try {
       await createCheckout(variantId, 1);
     } catch (error) {
-      console.error("Checkout failed:", error);
+      console.error("🔥 Checkout failed:", error);
+      alert("Checkout failed. Please try again.");
     } finally {
       setCheckoutLoading(null);
     }
@@ -57,7 +61,7 @@ const Shop = () => {
               ? product.variants.edges[0].node
               : null;
             const variantId = variantNode?.id;
-            const isAvailable = variantNode?.availableForSale; // ✅ New way to check stock
+            const isAvailable = variantNode?.availableForSale;
 
             return (
               <div className="shop__card" key={product.id}>
