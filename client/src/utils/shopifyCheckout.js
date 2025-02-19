@@ -69,25 +69,26 @@
 //   }
 // };
 
-const SHOPIFY_STORE_DOMAIN = "rikakuma.ca"; // ✅ Use the correct domain
-
 export const createCheckout = async (variantId, quantity = 1) => {
   if (!variantId) {
-    console.error("Error: No variant ID provided for checkout.");
+    console.error("❌ Error: No variant ID provided for checkout.");
     alert("Error: No variant ID found for checkout.");
     return;
   }
 
-  // ✅ Extract only the numeric ID from "gid://shopify/ProductVariant/42978067644467"
-  const variantNumericId = variantId.split("/").pop();
-
-  console.log(
-    `🛒 Redirecting to Shopify cart for Variant ID: ${variantNumericId}, Quantity: ${quantity}`
+  // ✅ Extract only the numeric Variant ID from Shopify's Global ID format (gid://shopify/ProductVariant/123456789)
+  const variantIdNumeric = variantId.replace(
+    "gid://shopify/ProductVariant/",
+    ""
   );
 
-  // ✅ Redirect to Shopify cart with correct format
-  const checkoutUrl = `https://${SHOPIFY_STORE_DOMAIN}/cart/add?id=${variantNumericId}&quantity=${quantity}`;
+  console.log(
+    `🛒 Redirecting to Shopify cart with Variant ID: ${variantIdNumeric}, Quantity: ${quantity}`
+  );
 
-  // ✅ Open the checkout page in the same window
-  window.location.href = checkoutUrl;
+  // ✅ Correct Shopify Cart URL format
+  const shopifyCartUrl = `https://vd871k-pc.myshopify.com/cart/${variantIdNumeric}:${quantity}`;
+
+  // ✅ Redirect user to Shopify's cart page
+  window.location.href = shopifyCartUrl;
 };
