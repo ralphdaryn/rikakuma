@@ -1,0 +1,8 @@
+[build]
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/cart"
+  to = "/.netlify/functions/shopifyCart"
+  status = 200
+  force = true
