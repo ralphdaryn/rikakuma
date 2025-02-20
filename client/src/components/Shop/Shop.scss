@@ -4,6 +4,7 @@
   color: #333;
   min-height: 100vh;
   padding: 2rem;
+  background-color: #f9f9f9; /* Light background for better contrast */
 
   &__title {
     margin-top: 1rem;
@@ -32,8 +33,8 @@
     padding: 1.5rem;
     text-align: center;
     width: calc(33.33% - 2rem); /* 3 cards per row, adjust for spacing */
-    max-width: 300px; /* Limits card size */
-    min-width: 250px; /* Prevents shrinking too much */
+    max-width: 300px;
+    min-width: 250px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 
@@ -78,6 +79,98 @@
     text-decoration: underline;
   }
 
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  /* Add to Cart Button */
+  &__cart-button {
+    background-color: #ffcc00; /* Shopify yellow */
+    color: #333;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+    width: 100%;
+
+    &:hover {
+      background-color: #ffbb00;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      background-color: #e6a800;
+      transform: translateY(0);
+    }
+  }
+
+  /* Buy Now Button */
+  &__checkout-button {
+    background-color: #ea4c89; /* Shopify pink */
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+    width: 100%;
+
+    &:hover {
+      background-color: #d83b78;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      background-color: #c83264;
+      transform: translateY(0);
+    }
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+
+  /* View Cart Button */
+  &__view-cart {
+    display: block;
+    margin: 2rem auto;
+    padding: 12px 18px;
+    background-color: #2563eb; /* Shopify blue */
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+
+    &:hover {
+      background-color: #1e4bb8;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      background-color: #16388a;
+      transform: translateY(0);
+    }
+  }
+
+  /* Out of Stock Text */
+  &__out-of-stock {
+    color: #dc2626; /* Shopify red */
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+
   /* Responsive adjustments */
   @include tablet {
     .shop__card {
@@ -89,34 +182,5 @@
     .shop__card {
       width: calc(33.33% - 2rem); /* 3 cards per row on larger screens */
     }
-  }
-}
-
-.shop__checkout-button {
-  background-color: #ea4c89;
-  color: white;
-  border: none;
-  padding: 10px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  margin-top: 12px;
-  transition: background 0.3s, transform 0.2s;
-  width: 100%;
-
-  &:hover {
-    background-color: #d83b78;
-    transform: translateY(-2px);
-  }
-
-  &:active {
-    background-color: #c83264;
-    transform: translateY(0);
-  }
-
-  &:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
   }
 }

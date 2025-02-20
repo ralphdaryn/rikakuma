@@ -1,12 +1,11 @@
 // import "./Shop.scss";
 // import { useEffect, useState } from "react";
 // import { fetchProducts } from "../../utils/shopifyClient";
-// import { createCheckout } from "../../utils/shopifyCheckout"; // Import checkout function
+// import { addToCart } from "../../utils/shopifyCheckout";
 
 // const Shop = () => {
 //   const [products, setProducts] = useState([]);
 //   const [loading, setLoading] = useState(false);
-//   const [checkoutLoading, setCheckoutLoading] = useState(null); // Track loading per product
 
 //   useEffect(() => {
 //     const getProducts = async () => {
@@ -29,23 +28,6 @@
 
 //     getProducts();
 //   }, []);
-
-//   const handleCheckout = async (variantId) => {
-//     if (!variantId) {
-//       console.error("❌ No variant ID found for product.");
-//       alert("Error: No variant ID found for this product.");
-//       return;
-//     }
-//     setCheckoutLoading(variantId);
-//     try {
-//       await createCheckout(variantId, 1);
-//     } catch (error) {
-//       console.error("🔥 Checkout failed:", error);
-//       alert("Checkout failed. Please try again.");
-//     } finally {
-//       setCheckoutLoading(null);
-//     }
-//   };
 
 //   return (
 //     <div className="shop">
@@ -83,13 +65,10 @@
 
 //                 {isAvailable ? (
 //                   <button
-//                     className="shop__checkout-button"
-//                     onClick={() => handleCheckout(variantId)}
-//                     disabled={checkoutLoading === variantId}
+//                     className="shop__cart-button"
+//                     onClick={() => addToCart(variantId)}
 //                   >
-//                     {checkoutLoading === variantId
-//                       ? "Processing..."
-//                       : "Buy Now"}
+//                     Add to Cart 🛒
 //                   </button>
 //                 ) : (
 //                   <p className="shop__out-of-stock">Out of stock</p>
@@ -110,12 +89,13 @@
 import "./Shop.scss";
 import { useEffect, useState } from "react";
 import { fetchProducts } from "../../utils/shopifyClient";
-import { createCheckout } from "../../utils/shopifyCheckout"; // Import the updated checkout function
+import { addToCart } from "../../utils/shopifyCheckout";
+import { useCart } from "../../context/CartContext"; // ✅ Import cart context
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [checkoutLoading, setCheckoutLoading] = useState(null); // Track loading per product
+  const { updateCartCount } = useCart(); // ✅ Get cart update function
 
   useEffect(() => {
     const getProducts = async () => {
@@ -138,29 +118,6 @@ const Shop = () => {
 
     getProducts();
   }, []);
-
-  const handleCheckout = async (product) => {
-    const hasVariants = product?.variants?.edges?.length > 0;
-    const variantNode = hasVariants ? product.variants.edges[0].node : null;
-    const variantId = variantNode?.id;
-
-    if (!variantId) {
-      console.error("❌ No variant ID found for this product.");
-      alert("Error: No variant ID found for this product.");
-      return;
-    }
-
-    console.log("🛒 Handling checkout for Variant ID:", variantId);
-    setCheckoutLoading(variantId);
-    try {
-      await createCheckout(variantId, 1);
-    } catch (error) {
-      console.error("🔥 Checkout failed:", error);
-      alert("Checkout failed. Please try again.");
-    } finally {
-      setCheckoutLoading(null);
-    }
-  };
 
   return (
     <div className="shop">
@@ -198,13 +155,10 @@ const Shop = () => {
 
                 {isAvailable ? (
                   <button
-                    className="shop__checkout-button"
-                    onClick={() => handleCheckout(product)}
-                    disabled={checkoutLoading === variantId}
+                    className="shop__cart-button"
+                    onClick={() => addToCart(variantId, 1, updateCartCount)} // ✅ Pass updateCartCount
                   >
-                    {checkoutLoading === variantId
-                      ? "Processing..."
-                      : "Buy Now"}
+                    Add to Cart 🛒
                   </button>
                 ) : (
                   <p className="shop__out-of-stock">Out of stock</p>

@@ -1,94 +1,114 @@
-// import axios from "axios";
+// export const addToCart = async (variantId, quantity = 1) => {
+//   if (!variantId) {
+//     console.error("❌ Error: No variant ID provided for cart.");
+//     alert("Error: No variant ID found for cart.");
+//     return;
+//   }
 
-// const SHOPIFY_STORE_DOMAIN = "vd871k-pc.myshopify.com"; // Shopify store domain
-// const SHOPIFY_ACCESS_TOKEN = "fbcd43b1623533712a01dcbc907bbe1d"; // Storefront API token
+//   // Extract numeric Variant ID
+//   const variantIdNumeric = variantId.replace(
+//     "gid://shopify/ProductVariant/",
+//     ""
+//   );
 
-// export const createCheckout = async (variantId, quantity = 1) => {
+//   console.log(
+//     `🛒 Adding product to Shopify cart: Variant ID: ${variantIdNumeric}, Quantity: ${quantity}`
+//   );
+
+//   try {
+//     // Shopify Add to Cart URL
+//     const cartUrl = `https://vd871k-pc.myshopify.com/cart/add?id=${variantIdNumeric}&quantity=${quantity}`;
+
+//     // Send a request to add the product to the cart without redirecting
+//     await fetch(cartUrl, { method: "GET", mode: "no-cors" });
+
+//     alert("✅ Product added to cart!");
+//   } catch (error) {
+//     console.error("🔥 Failed to add to cart:", error);
+//     alert("Failed to add product to cart.");
+//   }
+// };
+
+// // View cart function
+// export const viewCart = () => {
+//   const cartUrl = `https://vd871k-pc.myshopify.com/cart`;
+//   console.log("🔗 Redirecting to Shopify Cart:", cartUrl);
+//   window.location.href = cartUrl;
+// };
+
+// // Buy now function (Add to cart first, then go to checkout)
+// export const buyNow = async (variantId, quantity = 1) => {
 //   if (!variantId) {
 //     console.error("❌ Error: No variant ID provided for checkout.");
 //     alert("Error: No variant ID found for checkout.");
 //     return;
 //   }
 
-//   console.log(
-//     `🛒 Creating checkout for Variant ID: ${variantId}, Quantity: ${quantity}`
+//   // Extract numeric Variant ID
+//   const variantIdNumeric = variantId.replace(
+//     "gid://shopify/ProductVariant/",
+//     ""
 //   );
 
-//   const mutation = `
-//     mutation {
-//       checkoutCreate(input: {
-//         lineItems: [{ variantId: "${variantId}", quantity: ${quantity} }]
-//       }) {
-//         checkout {
-//           id
-//           webUrl
-//         }
-//         checkoutUserErrors {
-//           message
-//           field
-//           code
-//         }
-//       }
-//     }
-//   `;
+//   console.log(
+//     `🛒 Adding product to Shopify cart: Variant ID: ${variantIdNumeric}, Quantity: ${quantity}`
+//   );
 
 //   try {
-//     const response = await axios.post(
-//       `https://${SHOPIFY_STORE_DOMAIN}/api/2023-04/graphql.json`,
-//       { query: mutation },
-//       {
-//         headers: {
-//           "X-Shopify-Storefront-Access-Token": SHOPIFY_ACCESS_TOKEN,
-//           "Content-Type": "application/json",
-//         },
-//       }
-//     );
+//     // Shopify Add to Cart URL
+//     const cartUrl = `https://vd871k-pc.myshopify.com/cart/add?id=${variantIdNumeric}&quantity=${quantity}`;
 
-//     console.log("✅ Shopify Checkout Response:", response.data);
+//     console.log("🔗 Adding to Shopify Cart:", cartUrl);
 
-//     const checkout = response.data?.data?.checkoutCreate?.checkout;
-//     const errors = response.data?.data?.checkoutCreate?.checkoutUserErrors;
+//     // Make a request to add product to cart first
+//     await fetch(cartUrl, { method: "GET", credentials: "include" });
 
-//     if (checkout?.webUrl) {
-//       console.log("🔗 Redirecting to Checkout:", checkout.webUrl);
-//       window.location.href = checkout.webUrl; // ✅ Redirects user to checkout page
-//     } else {
-//       console.error("🚨 Checkout Error Details:", errors);
-//       alert(
-//         `Checkout Error: ${errors
-//           ?.map((e) => `${e.message} (Field: ${e.field})`)
-//           .join(", ")}`
-//       );
-//     }
+//     // ✅ Redirect to Shopify Checkout
+//     const checkoutUrl = `https://vd871k-pc.myshopify.com/cart`;
+//     console.log("🔗 Redirecting to Shopify Checkout:", checkoutUrl);
+
+//     // Ensure the redirection happens after the cart is updated
+//     setTimeout(() => {
+//       window.location.href = checkoutUrl;
+//     }, 500); // Adjust delay if needed
 //   } catch (error) {
-//     console.error(
-//       "🔥 Error creating checkout:",
-//       error.response?.data || error.message
-//     );
-//     alert("An error occurred while processing the checkout. Please try again.");
+//     console.error("🔥 Checkout process failed:", error);
+//     alert("Checkout failed. Please try again.");
 //   }
 // };
 
-export const createCheckout = async (variantId, quantity = 1) => {
+export const addToCart = async (variantId, quantity = 1, updateCartCount) => {
   if (!variantId) {
-    console.error("❌ Error: No variant ID provided for checkout.");
-    alert("Error: No variant ID found for checkout.");
+    console.error("❌ Error: No variant ID provided for cart.");
+    alert("Error: No variant ID found for cart.");
     return;
   }
 
-  // ✅ Extract only the numeric Variant ID from Shopify's Global ID format (gid://shopify/ProductVariant/123456789)
+  // Extract numeric Variant ID
   const variantIdNumeric = variantId.replace(
     "gid://shopify/ProductVariant/",
     ""
   );
 
   console.log(
-    `🛒 Redirecting to Shopify cart with Variant ID: ${variantIdNumeric}, Quantity: ${quantity}`
+    `🛒 Adding product to Shopify cart: Variant ID: ${variantIdNumeric}, Quantity: ${quantity}`
   );
 
-  // ✅ Correct Shopify Cart URL format
-  const shopifyCartUrl = `https://vd871k-pc.myshopify.com/cart/${variantIdNumeric}:${quantity}`;
+  try {
+    // Shopify Add to Cart URL
+    const cartUrl = `https://vd871k-pc.myshopify.com/cart/add?id=${variantIdNumeric}&quantity=${quantity}`;
 
-  // ✅ Redirect user to Shopify's cart page
-  window.location.href = shopifyCartUrl;
+    // Send a request to add the product to the cart without redirecting
+    await fetch(cartUrl, { method: "GET", mode: "no-cors" });
+
+    // ✅ Call `updateCartCount` if provided
+    if (updateCartCount) {
+      updateCartCount();
+    }
+
+    alert("✅ Product added to cart!");
+  } catch (error) {
+    console.error("🔥 Failed to add to cart:", error);
+    alert("Failed to add product to cart.");
+  }
 };
