@@ -1,35 +1,3 @@
-// export const addToCart = async (variantId, quantity = 1, updateCartCount) => {
-//   if (!variantId) {
-//     console.error("❌ Error: No variant ID provided for checkout.");
-//     alert("Error: No variant ID found for checkout.");
-//     return;
-//   }
-
-//   const variantIdNumeric = variantId.replace(
-//     "gid://shopify/ProductVariant/",
-//     ""
-//   );
-
-//   console.log(
-//     `🛒 Adding product to Shopify cart: Variant ID: ${variantIdNumeric}, Quantity: ${quantity}`
-//   );
-
-//   try {
-//     const cartUrl = `https://vd871k-pc.myshopify.com/cart/add?id=${variantIdNumeric}&quantity=${quantity}`;
-//     await fetch(cartUrl, { method: "GET", mode: "no-cors" });
-
-//     console.log("✅ Product added to cart!");
-
-//     // ✅ Call updateCartCount from outside (passed as a parameter)
-//     if (updateCartCount) {
-//       updateCartCount();
-//     }
-//   } catch (error) {
-//     console.error("🔥 Failed to add to cart:", error);
-//     alert("Failed to add product to cart.");
-//   }
-// };
-
 export const addToCart = async (variantId, quantity = 1) => {
   if (!variantId) {
     console.error("❌ Error: No variant ID provided for checkout.");

@@ -4,7 +4,7 @@ const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartCount, setCartCount] = useState(0);
-  const API_URL = "/api/cart"; // ✅ Use Netlify function instead of localhost
+  const API_URL = "/.netlify/functions/shopifyCart";
 
   const updateCartCount = async () => {
     try {
