@@ -71,7 +71,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     color: #38a169;
-    margin-top: 1rem;
+    margin: 1rem;
   }
 
   &__price:hover {
@@ -88,8 +88,8 @@
 
   /* Add to Cart Button */
   &__cart-button {
-    background-color: #ffcc00; /* Shopify yellow */
-    color: #333;
+    background-color: #fd82c3;
+    color: #fff;
     border: none;
     padding: 10px 12px;
     border-radius: 6px;
@@ -99,13 +99,14 @@
     transition: background 0.3s, transform 0.2s;
     width: 100%;
 
+
     &:hover {
-      background-color: #ffbb00;
+      background-color: #fd9bcf;
       transform: translateY(-2px);
     }
 
     &:active {
-      background-color: #e6a800;
+      background-color: #fd9bcf;
       transform: translateY(0);
     }
   }
