@@ -1,19 +1,30 @@
 import "./Header.scss";
 import { useState } from "react";
 import logo from "../../assets/images/rikakumalogo.jpeg";
-import { FaBars, FaTimes, FaShoppingBag } from "react-icons/fa";
-import { useCart } from "../../context/CartContext";
+import {
+  FaBars,
+  FaTimes,
+  FaShoppingBag,
+  FaHome,
+  FaInfoCircle,
+  FaEnvelope,
+  FaShoppingCart,
+} from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ onContactClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { cartCount } = useCart(); // Ensure cart count updates correctly
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen((prevState) => !prevState);
   };
 
-  const handleViewCart = () => {
-    window.location.href = "https://vd871k-pc.myshopify.com/cart";
+  const handleContactClick = () => {
+    navigate("/"); // Navigate to the Home page
+    setTimeout(() => {
+      onContactClick(); // Scroll to the contact section
+    }, 100); // Add a small delay to ensure navigation is complete
   };
 
   return (
@@ -27,20 +38,51 @@ const Header = ({ onContactClick }) => {
           >
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </div>
-          <img
-            className="header__logo"
-            src={logo}
-            alt="Rikakuma Logo"
-            loading="eager"
-          />
-          <div className="header__shopping-bag" onClick={handleViewCart}>
+          <div>
+            <img
+              className="header__logo"
+              src={logo}
+              alt="Rikakuma Logo"
+              loading="eager"
+            />
+          </div>
+          <div className="header__shopping-bag">
             <FaShoppingBag />
-            {cartCount > 0 && (
-              <span className="header__cart-count">{cartCount}</span>
-            )}
           </div>
         </div>
       </div>
+
+      <nav className={`header__nav ${isMenuOpen ? "header__nav--open" : ""}`}>
+        <ul className="header__nav-list">
+          <li className="header__nav-list__item">
+            <span className="header__navlink" onClick={() => navigate("/")}>
+              <FaHome /> Home
+            </span>
+          </li>
+          <li className="header__nav-list__item">
+            <span className="header__navlink" onClick={() => navigate("/shop")}>
+              <FaShoppingCart /> Shop
+            </span>
+          </li>
+          <li className="header__nav-list__item">
+            <span
+              className="header__navlink"
+              onClick={() => navigate("/about")}
+            >
+              <FaInfoCircle /> Information
+            </span>
+          </li>
+          <li className="header__nav-list__item">
+            <span
+              className="header__navlink"
+              onClick={handleContactClick}
+              style={{ cursor: "pointer" }}
+            >
+              <FaEnvelope /> Contact
+            </span>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 };
