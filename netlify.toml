@@ -1,7 +1,8 @@
 [build]
-  publish = "client/build"          # The output folder for your React app
-  functions = "netlify/functions"   # Your functions folder at the repo root
-  command = "npm install && cd client && npm install && npm run build"
+  base = "client"             # Change into "client/" before running build commands
+  command = "npm install && npm run build"  # Install dependencies and build within client/
+  publish = "build"           # This will refer to client/build
+  functions = "../netlify/functions"  # Go up one level from client/ to find netlify/functions
 
 [[redirects]]
   from = "/api/cart"
