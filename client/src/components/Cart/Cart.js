@@ -8,7 +8,7 @@ const Cart = () => {
 
   useEffect(() => {
     fetchCart();
-  }, [fetchCart]); // Added fetchCart as dependency
+  }, [fetchCart]); // Fetch cart on mount
 
   if (!cart) {
     return <p>Loading cart...</p>;
@@ -17,25 +17,29 @@ const Cart = () => {
   return (
     <div className="cart">
       <h2>Your Shopping Cart</h2>
-      {cart.items?.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <ul>
+
+      {cart.items && cart.items.length > 0 ? (
+        <ul className="cart__items">
           {cart.items.map((item) => (
-            <li key={item.id}>
-              <img src={item.image} alt={item.title} />
-              <div>
+            <li key={item.id} className="cart__item">
+              <img src={item.image} alt={item.title} className="cart__image" />
+              <div className="cart__details">
                 <h3>{item.title}</h3>
-                <p>Price: ${(item.price / 100).toFixed(2)}</p>
+                <p>{item.product_description}</p>
+                <p>Price: ${(item.price / 100).toFixed(2)} CAD</p>
                 <p>Quantity: {item.quantity}</p>
               </div>
             </li>
           ))}
         </ul>
+      ) : (
+        <p>Your cart is empty.</p>
       )}
-      <h3>Total: ${(cart.total_price / 100).toFixed(2)}</h3>
+
+      <h3>Total: ${(cart.total_price / 100).toFixed(2)} CAD</h3>
+
       <Link to="/checkout">
-        <button>Proceed to Checkout</button>
+        <button className="cart__checkout-button">Proceed to Checkout</button>
       </Link>
     </div>
   );

@@ -1,13 +1,12 @@
 import "./Shop.scss";
 import { useEffect, useState } from "react";
 import { fetchProducts } from "../../utils/shopifyClient";
-import { addToCart } from "../../utils/shopifyCheckout";
 import { useCart } from "../../context/CartContext";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { updateCartCount } = useCart(); // ✅ Now used properly
+  const { addItemToCart } = useCart();
 
   useEffect(() => {
     const getProducts = async () => {
@@ -15,11 +14,6 @@ const Shop = () => {
       try {
         const data = await fetchProducts();
         console.log("✅ Fetched Products:", data);
-
-        if (!data || data.length === 0) {
-          console.warn("⚠️ No products found in API response.");
-        }
-
         setProducts(data || []);
       } catch (error) {
         console.error("🔥 Error fetching products:", error);
@@ -32,8 +26,26 @@ const Shop = () => {
   }, []);
 
   const addToCartHandler = async (variantId) => {
-    await addToCart(variantId);
-    setTimeout(() => updateCartCount(), 1000); // Delay cart count update slightly
+    if (!variantId) {
+      console.error("❌ Variant ID is missing!", variantId);
+      return;
+    }
+
+    // Extract numeric variant ID from Shopify's GraphQL ID format
+    const numericVariantId = variantId.split("/").pop(); // Extracts '42961786404915'
+
+    if (!numericVariantId || isNaN(numericVariantId)) {
+      console.error("❌ Extracted Variant ID is invalid!", numericVariantId);
+      return;
+    }
+
+    console.log("🛍️ Adding numeric variant", numericVariantId, "to cart...");
+
+    try {
+      await addItemToCart(Number(numericVariantId)); // Convert to a valid number
+    } catch (error) {
+      console.error("❌ Error adding to cart:", error);
+    }
   };
 
   return (
