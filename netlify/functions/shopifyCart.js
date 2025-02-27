@@ -14,12 +14,11 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    const response = await axios.get(`${SHOPIFY_STORE_URL}/cart.js`, {
+    // Make sure the API endpoint is correct
+    const response = await axios.get(`${SHOPIFY_STORE_URL}/cart.json`, {
       headers: {
-        "X-Shopify-Storefront-Access-Token": SHOPIFY_ACCESS_TOKEN,
         "Content-Type": "application/json",
       },
-      withCredentials: true, // Ensure cookies are sent
     });
 
     console.log("✅ Cart data fetched successfully:", response.data);
@@ -41,7 +40,10 @@ exports.handler = async (event, context) => {
 
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Failed to fetch cart" }),
+      body: JSON.stringify({
+        error: "Failed to fetch cart",
+        details: error.message,
+      }),
     };
   }
 };
