@@ -1,10 +1,5 @@
 [build]
-  command = "npm install && cd client && npm install && npm run build"
-  publish = "client/build"          # React build output
-  functions = "netlify/functions"   # Functions are in netlify/functions at the root
-
-[[redirects]]
-  from = "/api/cart"
-  to = "/.netlify/functions/shopifyCart"
-  status = 200
-  force = true
+  base = "client"
+  command = "npm install && npm run build"  # Fix: No "cd client"
+  publish = "build"  # Fix: No "client/build", since we're already in "client"
+  functions = "../netlify/functions"  # Fix: Reference functions from the root
