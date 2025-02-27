@@ -4,7 +4,7 @@ import logo from "../../assets/images/rikakumalogo.jpeg";
 import {
   FaBars,
   FaTimes,
-  FaShoppingBag,
+  FaShoppingBag, 
   FaHome,
   FaInfoCircle,
   FaEnvelope,
@@ -21,16 +21,17 @@ const Header = ({ onContactClick }) => {
   };
 
   const handleContactClick = () => {
-    navigate("/"); // Navigate to the Home page
+    navigate("/"); // Navigate to Home
     setTimeout(() => {
-      onContactClick(); // Scroll to the contact section
-    }, 100); // Add a small delay to ensure navigation is complete
+      onContactClick(); // Scroll to contact section
+    }, 100);
   };
 
   return (
     <div className="header">
       <div className="header__container">
         <div className="header__wrapper">
+          {/* Hamburger Menu */}
           <div
             className="header__menu-icon"
             onClick={toggleMenu}
@@ -38,6 +39,8 @@ const Header = ({ onContactClick }) => {
           >
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </div>
+
+          {/* Logo */}
           <div>
             <img
               className="header__logo"
@@ -46,12 +49,19 @@ const Header = ({ onContactClick }) => {
               loading="eager"
             />
           </div>
-          <div className="header__shopping-bag">
+
+          {/* 🛒 Shopping Bag (Navigate to Cart) */}
+          <div
+            className="header__shopping-bag"
+            onClick={() => navigate("/cart")} // ✅ Add navigation to Cart
+            style={{ cursor: "pointer" }} // ✅ Make it clickable
+          >
             <FaShoppingBag />
           </div>
         </div>
       </div>
 
+      {/* Navigation Menu */}
       <nav className={`header__nav ${isMenuOpen ? "header__nav--open" : ""}`}>
         <ul className="header__nav-list">
           <li className="header__nav-list__item">
