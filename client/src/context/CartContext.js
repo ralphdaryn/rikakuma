@@ -1,44 +1,37 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
-const CartContext = createContext();
+export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cartCount, setCartCount] = useState(0);
-  const API_URL = "/.netlify/functions/shopifyCart";
+  const [cart, setCart] = useState({
+    item_count: 0,
+    items: [],
+    total_price: 0,
+  });
 
-  const updateCartCount = async () => {
+  const fetchCart = async () => {
     try {
-      console.log(`📦 Fetching cart count from: ${API_URL}`);
-
-      const response = await fetch(API_URL, {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) throw new Error("❌ Failed to fetch cart data");
-
+      const response = await fetch("/.netlify/functions/shopifyCart");
       const data = await response.json();
-      console.log("✅ Cart data received:", data);
-
-      const itemCount = data?.item_count || 0;
-      setCartCount(itemCount);
+      console.log("🛒 Cart Data:", data);
+      setCart(data);
     } catch (error) {
-      console.error("🔥 Error fetching cart count:", error);
+      console.error("❌ Error fetching cart:", error);
     }
   };
 
   useEffect(() => {
-    updateCartCount();
+    fetchCart();
   }, []);
 
   return (
-    <CartContext.Provider value={{ cartCount, updateCartCount }}>
+    <CartContext.Provider value={{ cart, fetchCart }}>
       {children}
     </CartContext.Provider>
   );
 };
 
-export const useCart = () => useContext(CartContext);
+// ✅ Custom Hook to use Cart
+export const useCart = () => {
+  return useContext(CartContext);
+};

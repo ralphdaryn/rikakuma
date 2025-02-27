@@ -1,29 +1,36 @@
 import "./Header.scss";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import logo from "../../assets/images/rikakumalogo.jpeg";
 import {
   FaBars,
   FaTimes,
-  FaShoppingBag, 
+  FaShoppingBag,
   FaHome,
   FaInfoCircle,
   FaEnvelope,
   FaShoppingCart,
 } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 const Header = ({ onContactClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { cart, fetchCart } = useContext(CartContext);
+
+  // Ensure the cart is updated when the component mounts
+  useEffect(() => {
+    fetchCart();
+  }, [fetchCart]);
 
   const toggleMenu = () => {
     setIsMenuOpen((prevState) => !prevState);
   };
 
   const handleContactClick = () => {
-    navigate("/"); // Navigate to Home
+    navigate("/");
     setTimeout(() => {
-      onContactClick(); // Scroll to contact section
+      onContactClick();
     }, 100);
   };
 
@@ -31,7 +38,6 @@ const Header = ({ onContactClick }) => {
     <div className="header">
       <div className="header__container">
         <div className="header__wrapper">
-          {/* Hamburger Menu */}
           <div
             className="header__menu-icon"
             onClick={toggleMenu}
@@ -39,8 +45,6 @@ const Header = ({ onContactClick }) => {
           >
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </div>
-
-          {/* Logo */}
           <div>
             <img
               className="header__logo"
@@ -49,19 +53,16 @@ const Header = ({ onContactClick }) => {
               loading="eager"
             />
           </div>
-
-          {/* 🛒 Shopping Bag (Navigate to Cart) */}
-          <div
-            className="header__shopping-bag"
-            onClick={() => navigate("/cart")} // ✅ Add navigation to Cart
-            style={{ cursor: "pointer" }} // ✅ Make it clickable
-          >
+          {/* 🛒 Shopping Cart with Item Count */}
+          <Link to="/cart" className="header__shopping-bag">
             <FaShoppingBag />
-          </div>
+            {cart?.item_count > 0 && (
+              <span className="cart-count">{cart.item_count}</span>
+            )}
+          </Link>
         </div>
       </div>
 
-      {/* Navigation Menu */}
       <nav className={`header__nav ${isMenuOpen ? "header__nav--open" : ""}`}>
         <ul className="header__nav-list">
           <li className="header__nav-list__item">
