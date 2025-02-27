@@ -1,6 +1,6 @@
 [build]
-  base = "client"  # Keep base as "client" since Netlify installs dependencies there
-  command = "npm install && npm run build"  # Build React app
+  base = "client"  # Ensures dependencies are installed inside "client/"
+  command = "npm install && npm run build && npm install --prefix ../netlify/functions"
   publish = "build"  # Make sure the built React app is deployed correctly
   functions = "../netlify/functions"  # Use the correct path for serverless functions
 
