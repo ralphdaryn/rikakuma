@@ -64,7 +64,7 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    const response = await axios.get(`${SHOPIFY_STORE_URL}/cart.js`, {
+    const response = await axios.get(`${SHOPIFY_STORE_URL}/cart.json`, {
       headers: {
         "Content-Type": "application/json",
       },
