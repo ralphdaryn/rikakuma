@@ -1,5 +1,11 @@
 [build]
-  base = "client"
-  command = "npm install && npm run build"  # Fix: No "cd client"
-  publish = "build"  # Fix: No "client/build", since we're already in "client"
-  functions = "../netlify/functions"  # Fix: Reference functions from the root
+  base = "client"  # Keep base as "client" since Netlify installs dependencies there
+  command = "npm install && npm run build"  # Build React app
+  publish = "build"  # Make sure the built React app is deployed correctly
+  functions = "../netlify/functions"  # Use the correct path for serverless functions
+
+[[redirects]]
+  from = "/api/cart"
+  to = "/.netlify/functions/shopifyCart"
+  status = 200
+  force = true
