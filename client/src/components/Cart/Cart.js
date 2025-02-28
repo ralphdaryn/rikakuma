@@ -7,8 +7,21 @@ const Cart = () => {
   const { cart, fetchCart } = useContext(CartContext);
 
   useEffect(() => {
+    console.log("📦 Fetching cart on mount...");
     fetchCart();
-  }, [fetchCart]); // Fetch cart on mount
+
+    // Re-fetch the cart after 1 second in case Shopify hasn't updated yet
+    const fetchTimeout = setTimeout(() => {
+      console.log("🔄 Re-fetching cart for updates...");
+      fetchCart();
+    }, 1000);
+
+    return () => clearTimeout(fetchTimeout); // Cleanup timeout on unmount
+  }, [fetchCart]);
+
+  useEffect(() => {
+    console.log("🛒 Cart state updated:", cart);
+  }, [cart]);
 
   if (!cart) {
     return <p>Loading cart...</p>;
@@ -18,7 +31,7 @@ const Cart = () => {
     <div className="cart">
       <h2>Your Shopping Cart</h2>
 
-      {cart.items && cart.items.length > 0 ? (
+      {cart?.items?.length > 0 ? (
         <ul className="cart__items">
           {cart.items.map((item) => (
             <li key={item.id} className="cart__item">
