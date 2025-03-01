@@ -1,52 +1,43 @@
 const fetch = require("node-fetch");
 
-const SHOPIFY_STORE_URL = "https://vd871k-pc.myshopify.com";
-
 exports.handler = async (event) => {
-  try {
-    const { variantId, quantity } = JSON.parse(event.body);
+  if (event.httpMethod !== "POST") {
+    return {
+      statusCode: 405,
+      body: JSON.stringify({ error: "Method Not Allowed" }),
+    };
+  }
 
-    if (!variantId || isNaN(variantId)) {
-      throw new Error("Missing or invalid variantId");
+  try {
+    console.log("🛍️ Adding item to Shopify cart...");
+
+    const body = JSON.parse(event.body);
+    const { variantId, quantity } = body;
+
+    if (!variantId || !quantity) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: "Missing variantId or quantity" }),
+      };
     }
 
-    console.log("🛍️ Adding Variant ID:", variantId, "Quantity:", quantity);
-
-    const payload = {
-      items: [
-        {
-          id: Number(variantId), // Ensure it's a valid number
-          quantity: quantity || 1,
-        },
-      ],
-    };
-
-    console.log("📦 Payload being sent:", JSON.stringify(payload));
-
-    const response = await fetch(`${SHOPIFY_STORE_URL}/cart/add.js`, {
+    // Shopify Public Cart API (No Authentication Required)
+    const response = await fetch("https://rikakuma.ca/cart/add.js", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: variantId, quantity }),
+      credentials: "include",
     });
 
-    const responseText = await response.text(); // Read raw response
-
-    if (!response.ok) {
-      console.error("🚨 Shopify API Error:", response.status, responseText);
-      throw new Error(`Shopify API Error: ${response.status} ${responseText}`);
-    }
-
-    const cartData = JSON.parse(responseText);
-    console.log("✅ Item added to cart successfully:", cartData);
+    const data = await response.json();
+    console.log("✅ Item added to cart:", data);
 
     return {
       statusCode: 200,
-      body: JSON.stringify(cartData),
+      body: JSON.stringify(data),
     };
   } catch (error) {
-    console.error("❌ Error in addToCart function:", error.message);
+    console.error("❌ Error adding to cart:", error.message);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: error.message }),
