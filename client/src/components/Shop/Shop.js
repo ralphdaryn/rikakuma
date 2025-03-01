@@ -1,12 +1,10 @@
 import "./Shop.scss";
 import { useEffect, useState } from "react";
 import { fetchProducts } from "../../utils/shopifyClient";
-import { useCart } from "../../context/CartContext";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { addItemToCart } = useCart();
 
   useEffect(() => {
     const getProducts = async () => {
@@ -25,7 +23,7 @@ const Shop = () => {
     getProducts();
   }, []);
 
-  const addToCartHandler = async (variantId) => {
+  const addToCartHandler = (variantId) => {
     if (!variantId) {
       console.error("❌ Variant ID is missing!", variantId);
       return;
@@ -39,13 +37,10 @@ const Shop = () => {
       return;
     }
 
-    console.log("🛍️ Adding numeric variant", numericVariantId, "to cart...");
+    console.log("🛍️ Adding to Shopify cart:", numericVariantId);
 
-    try {
-      await addItemToCart(Number(numericVariantId)); // Convert to a valid number
-    } catch (error) {
-      console.error("❌ Error adding to cart:", error);
-    }
+    // Redirect user to Shopify cart (not checkout)
+    window.location.href = `https://vd871k-pc.myshopify.com/cart/add?id=${numericVariantId}&quantity=1`;
   };
 
   return (

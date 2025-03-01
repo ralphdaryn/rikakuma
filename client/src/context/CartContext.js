@@ -1,72 +1,47 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  useCallback,
-} from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(null);
 
-  // ✅ Fetch Cart from Netlify function instead of Shopify directly
-  const fetchCart = useCallback(async () => {
+  const fetchCart = async () => {
     try {
-      console.log("🔄 Fetching cart...");
-
-      const response = await fetch("/.netlify/functions/getCart"); // Calls Netlify function
-
-      if (!response.ok) {
-        throw new Error(
-          `Cart API Error: ${response.status} ${response.statusText}`
-        );
-      }
-
-      const data = await response.json();
-      console.log("🛒 Cart Data:", data);
-
-      setCart(data);
+      const response = await fetch("https://rikakuma.ca/cart.js", {
+        credentials: "include",
+      });
+      const cartData = await response.json();
+      console.log("🛒 Shopify Cart Data:", cartData);
+      setCart(cartData);
     } catch (error) {
-      console.error("❌ Error fetching cart:", error.message);
+      console.error("❌ Error fetching Shopify cart:", error);
     }
-  }, []);
+  };
 
-  // ✅ Add item using Netlify function
-  const addItemToCart = async (variantId) => {
+  const addItemToCart = async (variantId, quantity = 1) => {
     try {
-      if (!variantId || isNaN(variantId)) {
-        console.error("❌ Variant ID is missing or invalid!", variantId);
-        return;
-      }
-
-      console.log(`🛍️ Adding product ${variantId} to cart...`);
+      console.log("🛍️ Adding item to cart via Netlify function...");
 
       const response = await fetch("/.netlify/functions/addToCart", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ variantId: Number(variantId), quantity: 1 }), // Ensure it's a valid number
+        body: JSON.stringify({ variantId, quantity }),
+        credentials: "include",
       });
 
-      const responseText = await response.text();
-      console.log("🔍 Raw Response:", responseText);
+      const data = await response.json();
+      console.log("✅ Item added:", data);
 
-      if (!response.ok) {
-        console.error("❌ Shopify API Error:", response.status, responseText);
-        throw new Error(`Failed to add to cart: ${response.statusText}`);
-      }
-
-      console.log("✅ Item added successfully!");
-      fetchCart(); // Refresh cart
+      // Fetch updated cart
+      fetchCart();
     } catch (error) {
-      console.error("❌ Error adding to cart:", error);
+      console.error("❌ Error adding item to cart:", error);
     }
   };
 
   useEffect(() => {
     fetchCart();
-  }, [fetchCart]);
+  }, []);
 
   return (
     <CartContext.Provider value={{ cart, fetchCart, addItemToCart }}>
@@ -74,6 +49,3 @@ export const CartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
-
-// ✅ Custom Hook for Cart
-export const useCart = () => useContext(CartContext);
