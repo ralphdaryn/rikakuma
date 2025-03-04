@@ -1,7 +1,7 @@
 import "./App.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useRef } from "react";
-import { CartProvider } from "./context/CartContext"; 
+import { CartProvider } from "./context/CartContext";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Hero from "./components/Hero/Hero";
@@ -10,7 +10,7 @@ import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
 import Search from "./components/Search/Search";
 import Shop from "./components/Shop/Shop";
-import Cart from "./components/Cart/Cart"; 
+import Cart from "./components/Cart/Cart";
 
 const App = () => {
   const contactRef = useRef(null);

@@ -9,12 +9,12 @@ const Cart = () => {
     console.log("📦 Fetching cart on mount...");
     fetchCart();
 
-    const fetchTimeout = setTimeout(() => {
+    const fetchTimeout = setInterval(() => {
       console.log("🔄 Re-fetching cart for updates...");
       fetchCart();
-    }, 1000);
+    }, 5000); // Poll every 5 seconds for updates
 
-    return () => clearTimeout(fetchTimeout);
+    return () => clearInterval(fetchTimeout);
   }, [fetchCart]);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const Cart = () => {
     <div className="cart">
       <h2>Your Shopping Cart</h2>
 
-      {cart?.items?.length > 0 ? (
+      {Array.isArray(cart?.items) && cart.items.length > 0 ? (
         <ul className="cart__items">
           {cart.items.map((item) => (
             <li key={item.id} className="cart__item">
@@ -51,7 +51,10 @@ const Cart = () => {
         <p>Your cart is empty.</p>
       )}
 
-      <h3>Total: ${(cart.total_price / 100).toFixed(2)} CAD</h3>
+      <h3>
+        Total: $
+        {cart.total_price ? (cart.total_price / 100).toFixed(2) : "0.00"} CAD
+      </h3>
 
       <a href="https://rikakuma.ca/cart">
         <button className="cart__checkout-button">View Shopify Cart</button>
