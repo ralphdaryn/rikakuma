@@ -11,7 +11,6 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(null);
   const [cartFetched, setCartFetched] = useState(false);
 
-  // ✅ Use useCallback to prevent unnecessary re-renders
   const createCart = useCallback(async () => {
     if (cartId) return;
 
@@ -40,11 +39,8 @@ export const CartProvider = ({ children }) => {
     }
   }, [cartId]);
 
-  // ✅ Fetch Shopify Cart
   const fetchCart = useCallback(async () => {
     if (!cartId || cartFetched) return;
-
-    console.log("📦 Fetching Shopify cart...");
 
     try {
       setCartFetched(true);
@@ -57,18 +53,14 @@ export const CartProvider = ({ children }) => {
       if (!response.ok) throw new Error("Failed to fetch cart");
 
       const cartData = await response.json();
-      console.log("✅ Shopify Cart Data:", cartData);
       setCart(cartData);
     } catch (error) {
       console.error("❌ Error fetching Shopify cart:", error);
     }
   }, [cartId, cartFetched]);
 
-  // ✅ Remove Item from Shopify Cart
   const removeFromCart = async (lineId) => {
     if (!cartId || !lineId) return;
-
-    console.log("🗑️ Removing item from cart...");
 
     try {
       const response = await fetch(`${API_URL}/.netlify/functions/cartRemove`, {
@@ -79,22 +71,22 @@ export const CartProvider = ({ children }) => {
 
       if (!response.ok) throw new Error("Failed to remove item");
 
-      console.log("✅ Item removed from cart!");
-      fetchCart(); // Refresh the cart
+      fetchCart();
     } catch (error) {
       console.error("❌ Error removing item from cart:", error);
     }
   };
 
-  // ✅ useEffect to create the cart
-  useEffect(() => {
-    createCart();
-  }, [createCart]); // ✅ Fix: Include `createCart`
-
-  // ✅ useEffect to fetch the cart
+  // ✅ Optimized Polling: Reduced to every 30 sec
   useEffect(() => {
     fetchCart();
-  }, [fetchCart]); // ✅ Fix: Include `fetchCart`
+
+    const fetchTimeout = setInterval(() => {
+      fetchCart();
+    }, 30000);
+
+    return () => clearInterval(fetchTimeout);
+  }, [fetchCart]);
 
   return (
     <CartContext.Provider

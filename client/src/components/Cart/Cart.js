@@ -3,23 +3,12 @@ import { CartContext } from "../../context/CartContext";
 import "./Cart.scss";
 
 const Cart = () => {
-  const { cart, fetchCart } = useContext(CartContext);
+  const { cart, fetchCart, removeFromCart } = useContext(CartContext);
 
   useEffect(() => {
     console.log("📦 Fetching cart on mount...");
     fetchCart();
-
-    const fetchTimeout = setInterval(() => {
-      console.log("🔄 Re-fetching cart for updates...");
-      fetchCart();
-    }, 5000); // Poll every 5 seconds for updates
-
-    return () => clearInterval(fetchTimeout);
   }, [fetchCart]);
-
-  useEffect(() => {
-    console.log("🛒 Cart state updated:", cart);
-  }, [cart]);
 
   if (!cart) {
     return <p>Loading cart...</p>;
@@ -29,21 +18,13 @@ const Cart = () => {
     <div className="cart">
       <h2>Your Shopping Cart</h2>
 
-      {Array.isArray(cart?.items) && cart.items.length > 0 ? (
+      {cart?.lines?.edges.length > 0 ? (
         <ul className="cart__items">
-          {cart.items.map((item) => (
-            <li key={item.id} className="cart__item">
-              <img
-                src={item.image}
-                alt={item.product_title}
-                className="cart__image"
-              />
-              <div className="cart__details">
-                <h3>{item.product_title}</h3>
-                <p>{item.product_description || "No description available"}</p>
-                <p>Price: ${(item.final_price / 100).toFixed(2)} CAD</p>
-                <p>Quantity: {item.quantity}</p>
-              </div>
+          {cart.lines.edges.map(({ node }) => (
+            <li key={node.id} className="cart__item">
+              <h3>{node.merchandise.product.title}</h3>
+              <p>Quantity: {node.quantity}</p>
+              <button onClick={() => removeFromCart(node.id)}>Remove</button>
             </li>
           ))}
         </ul>
@@ -52,8 +33,8 @@ const Cart = () => {
       )}
 
       <h3>
-        Total: $
-        {cart.total_price ? (cart.total_price / 100).toFixed(2) : "0.00"} CAD
+        Total: {cart.cost.totalAmount.amount}{" "}
+        {cart.cost.totalAmount.currencyCode}
       </h3>
 
       <a href="https://rikakuma.ca/cart">
