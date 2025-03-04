@@ -65,16 +65,10 @@ exports.handler = async (event) => {
     const data = await response.json();
 
     if (data.errors || data.data?.cartLinesRemove?.userErrors?.length) {
-      console.error(
-        "❌ Shopify API Error:",
-        data.errors || data.data?.cartLinesRemove?.userErrors
-      );
+      console.error("❌ Shopify API Error:", data.errors);
       return {
         statusCode: 500,
-        body: JSON.stringify({
-          error: "Failed to remove item",
-          details: data.errors || data.data?.cartLinesRemove?.userErrors,
-        }),
+        body: JSON.stringify({ error: "Failed to remove item" }),
       };
     }
 

@@ -9,3 +9,26 @@
   to = "/.netlify/functions/shopifyCart"
   status = 200
   force = true
+
+  [[redirects]]
+  from = "/api/add-to-cart"
+  to = "/.netlify/functions/addToCart"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/remove-from-cart"
+  to = "/.netlify/functions/cartRemove"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://vd871k-pc.myshopify.com/*"
+  to = "https://www.rikakuma.ca/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

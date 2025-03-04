@@ -25,10 +25,6 @@ exports.handler = async (event) => {
       };
     }
 
-    console.log(
-      `🛍️ Adding ${quantity}x Variant ID: ${variantId} to checkout: ${checkoutId}...`
-    );
-
     const response = await fetch(SHOPIFY_API_URL, {
       method: "POST",
       headers: {
@@ -66,11 +62,6 @@ exports.handler = async (event) => {
     if (!data?.data?.checkoutLineItemsAdd?.checkout) {
       throw new Error("Failed to add item to checkout");
     }
-
-    console.log(
-      "✅ Item added to checkout:",
-      data.data.checkoutLineItemsAdd.checkout
-    );
 
     return {
       statusCode: 200,

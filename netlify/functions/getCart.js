@@ -21,7 +21,9 @@ exports.handler = async (event) => {
       };
     }
 
-    console.log("📦 Fetching Shopify cart...");
+    // ✅ Debug mode toggle
+    const DEBUG_MODE = process.env.DEBUG === "true";
+    if (DEBUG_MODE) console.log("📦 Fetching Shopify cart...");
 
     const response = await fetch(
       `${SHOPIFY_STORE_URL}/api/2023-10/graphql.json`,
@@ -38,6 +40,7 @@ exports.handler = async (event) => {
             lines(first: 10) {
               edges {
                 node {
+                  id
                   quantity
                   merchandise {
                     ... on ProductVariant {
@@ -74,8 +77,6 @@ exports.handler = async (event) => {
         }),
       };
     }
-
-    console.log("✅ Shopify Cart Data:", data.data.cart);
 
     return {
       statusCode: 200,

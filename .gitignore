@@ -7,9 +7,13 @@ server/node_modules/
 client/build/
 server/dist/
 dist/
+build/
 
 # Environment variables
 .env
+.env.local
+.env.development
+.env.production
 client/.env
 server/.env
 
@@ -22,8 +26,18 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
 # Local Netlify folder
 .netlify/
 .netlify/functions/
 .netlify/state.json
+
+# Editor-specific
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
