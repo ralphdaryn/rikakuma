@@ -8,39 +8,82 @@ exports.handler = async (event) => {
     };
   }
 
+  const SHOPIFY_API_URL =
+    "https://rikakuma.myshopify.com/api/2023-10/graphql.json";
+  const SHOPIFY_ACCESS_TOKEN = "your-storefront-access-token"; // 🔹 Replace this!
+
   try {
-    console.log("🛍️ Adding item to Shopify cart...");
-
     const body = JSON.parse(event.body);
-    const { variantId, quantity } = body;
+    const { checkoutId, variantId, quantity } = body;
 
-    if (!variantId || !quantity) {
+    if (!checkoutId || !variantId || !quantity) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: "Missing variantId or quantity" }),
+        body: JSON.stringify({
+          error: "Missing checkoutId, variantId, or quantity",
+        }),
       };
     }
 
-    // Shopify Public Cart API (No Authentication Required)
-    const response = await fetch("https://rikakuma.ca/cart/add.js", {
+    console.log(
+      `🛍️ Adding ${quantity}x Variant ID: ${variantId} to checkout: ${checkoutId}...`
+    );
+
+    const response = await fetch(SHOPIFY_API_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: variantId, quantity }),
-      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Shopify-Storefront-Access-Token": SHOPIFY_ACCESS_TOKEN,
+      },
+      body: JSON.stringify({
+        query: `
+          mutation {
+            checkoutLineItemsAdd(checkoutId: "${checkoutId}", lineItems: [{ quantity: ${quantity}, variantId: "${variantId}" }]) {
+              checkout {
+                id
+                webUrl
+                lineItems(first: 10) {
+                  edges {
+                    node {
+                      title
+                      quantity
+                    }
+                  }
+                }
+              }
+              userErrors {
+                field
+                message
+              }
+            }
+          }
+        `,
+      }),
     });
 
     const data = await response.json();
-    console.log("✅ Item added to cart:", data);
+
+    if (!data?.data?.checkoutLineItemsAdd?.checkout) {
+      throw new Error("Failed to add item to checkout");
+    }
+
+    console.log(
+      "✅ Item added to checkout:",
+      data.data.checkoutLineItemsAdd.checkout
+    );
 
     return {
       statusCode: 200,
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        checkoutId: data.data.checkoutLineItemsAdd.checkout.id,
+        webUrl: data.data.checkoutLineItemsAdd.checkout.webUrl,
+      }),
     };
   } catch (error) {
-    console.error("❌ Error adding to cart:", error.message);
+    console.error("❌ Error adding item to checkout:", error.message);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: error.message }),
+      body: JSON.stringify({ error: "Failed to add item to checkout" }),
     };
   }
 };
