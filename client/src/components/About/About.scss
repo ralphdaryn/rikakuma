@@ -9,6 +9,9 @@
   @include desktop {
     margin: 0 20rem;
   }
+  @include high-res {
+    margin: 0 50rem;
+  }
 
   &__title {
     font-size: 2rem;
