@@ -1,24 +1,16 @@
 [build]
-  base = "client"
+  base = "client"  # Ensures dependencies are installed inside "client/"
   command = "npm install && npm run build && npm install --prefix ../netlify/functions"
-  publish = "build"
-  functions = "../netlify/functions"
+  publish = "build"  # Make sure the built React app is deployed correctly
+  functions = "../netlify/functions"  # Use the correct path for serverless functions
 
-# 🔹 Proxy `/cart` to Shopify's cart while keeping `rikakuma.ca/cart`
-[[redirects]]
-  from = "/cart"
-  to = "https://vd871k-pc.myshopify.com/cart"
-  status = 200
-  force = true
-
-# 🔹 API Routes for Netlify Serverless Functions
 [[redirects]]
   from = "/api/cart"
   to = "/.netlify/functions/shopifyCart"
   status = 200
   force = true
 
-[[redirects]]
+  [[redirects]]
   from = "/api/add-to-cart"
   to = "/.netlify/functions/addToCart"
   status = 200
@@ -30,9 +22,12 @@
   status = 200
   force = true
 
-# ❌ Removed the broken Shopify domain redirect
+[[redirects]]
+  from = "https://vd871k-pc.myshopify.com/*"
+  to = "https://www.rikakuma.ca/:splat"
+  status = 301
+  force = true
 
-# 🔹 Catch-all for React App, must be LAST to prevent overriding `/cart`
 [[redirects]]
   from = "/*"
   to = "/index.html"
