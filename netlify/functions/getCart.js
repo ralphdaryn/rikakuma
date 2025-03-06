@@ -1,5 +1,3 @@
-const fetch = require("node-fetch");
-
 exports.handler = async (event) => {
   try {
     const SHOPIFY_STORE_URL = process.env.SHOPIFY_STORE_URL;
@@ -21,7 +19,7 @@ exports.handler = async (event) => {
       };
     }
 
-    // ✅ Debug mode toggle
+    // Debug mode toggle via environment variable
     const DEBUG_MODE = process.env.DEBUG === "true";
     if (DEBUG_MODE) console.log("📦 Fetching Shopify cart...");
 
@@ -35,32 +33,32 @@ exports.handler = async (event) => {
         },
         body: JSON.stringify({
           query: `query {
-          cart(id: "${cartId}") {
-            id
-            lines(first: 10) {
-              edges {
-                node {
-                  id
-                  quantity
-                  merchandise {
-                    ... on ProductVariant {
-                      id
-                      product {
-                        title
+            cart(id: "${cartId}") {
+              id
+              lines(first: 10) {
+                edges {
+                  node {
+                    id
+                    quantity
+                    merchandise {
+                      ... on ProductVariant {
+                        id
+                        product {
+                          title
+                        }
                       }
                     }
                   }
                 }
               }
-            }
-            cost {
-              totalAmount {
-                amount
-                currencyCode
+              cost {
+                totalAmount {
+                  amount
+                  currencyCode
+                }
               }
             }
-          }
-        }`,
+          }`,
         }),
       }
     );
