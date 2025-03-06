@@ -10,7 +10,7 @@ import {
   FaEnvelope,
   FaShoppingCart,
 } from "react-icons/fa";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
 const Header = ({ onContactClick }) => {
@@ -34,6 +34,11 @@ const Header = ({ onContactClick }) => {
     }, 100);
   };
 
+  const handleCartClick = () => {
+    // Redirect to Shopify cart instead of React Router cart page
+    window.location.href = "https://vd871k-pc.myshopify.com/cart";
+  };
+
   return (
     <div className="header">
       <div className="header__container">
@@ -53,13 +58,17 @@ const Header = ({ onContactClick }) => {
               loading="eager"
             />
           </div>
-          {/* 🛒 Shopping Cart with Item Count */}
-          <Link to="/cart" className="header__shopping-bag">
+          {/* 🛒 Updated Shopping Cart to use Shopify link */}
+          <div
+            className="header__shopping-bag"
+            onClick={handleCartClick}
+            style={{ cursor: "pointer" }}
+          >
             <FaShoppingBag />
             {cart?.item_count > 0 && (
               <span className="cart-count">{cart.item_count}</span>
             )}
-          </Link>
+          </div>
         </div>
       </div>
 
