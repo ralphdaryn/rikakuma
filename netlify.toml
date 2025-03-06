@@ -1,4 +1,4 @@
-  [build]
+[build]
   base = "client"
   command = "npm install && npm run build && npm install --prefix ../netlify/functions"
   publish = "build"
@@ -31,9 +31,8 @@
   status = 200
   force = true
 
-# 🔹 Serve React App, but let /cart go to Shopify
+# 🔹 Catch-all redirect for React app, must be LAST
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  conditions = {Path != "/cart"}
