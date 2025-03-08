@@ -9,6 +9,7 @@ import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
 import Search from "./components/Search/Search";
 import Shop from "./components/Shop/Shop";
+import ShippingInfo from "./components/ShippingInfo/ShippingInfo";
 
 const App = () => {
   const contactRef = useRef(null);
@@ -20,6 +21,7 @@ const App = () => {
   return (
     <Router>
       <div className="app">
+        <ShippingInfo />
         <Header onContactClick={scrollToContact} />
         <div className="background">
           <Search />

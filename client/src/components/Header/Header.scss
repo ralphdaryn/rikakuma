@@ -51,7 +51,7 @@
 
       @include desktop {
         position: absolute;
-        right: 2rem;
+        right: 12rem;
       }
     }
   }
@@ -74,7 +74,6 @@
     display: none;
     align-items: center;
     font-family: "Nunito-Bold", sans-serif;
-    font-weight: 700;
 
     @include desktop {
       justify-content: center;
@@ -108,30 +107,29 @@
         flex-direction: row;
         justify-content: center;
         gap: 6rem;
-        background-color: transparent;
+        background-color: #5a3e79;
         font-size: 1.5rem;
+        width: 100%;
       }
 
       &__item {
         .header__navlink {
           display: flex;
           justify-content: flex-start;
-          align-items: center; /* Align icon and text vertically */
-          gap: 0.5rem; /* Add spacing between icon and text */
+          align-items: center; 
+          gap: 0.5rem; 
           text-decoration: none;
           color: white;
-          transition: color 0.3s ease; /* Smooth hover effect */
+          transition: color 0.3s ease; 
           cursor: pointer;
 
           @include desktop {
-            font-size: 1.55rem;
+            font-size: 1.5rem;
           }
 
           &:hover {
             color: #c9f8ff;
           }
-
-          // Icon styling
           svg {
             font-size: 1.5rem;
           }
