@@ -1,0 +1,59 @@
+.charms {
+  padding: 1rem;
+  &__title {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  &__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__image {
+    width: 12rem;
+    border-radius: 2rem;
+  }
+  &__subtitle {
+    &-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+  }
+  &__text {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+  &__subtext {
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+  }
+  &__button {
+    margin-top: 0.5rem;
+    background-color: #5a3e79;
+    padding: 0.75rem 2.5rem;
+    border-radius: 16px;
+    text-align: center;
+    color: #fff;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 10rem;
+    &:hover {
+      cursor: pointer;
+      background-color: #483261;
+    }
+  }
+}

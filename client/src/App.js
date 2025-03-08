@@ -11,6 +11,7 @@ import Search from "./components/Search/Search";
 import Shop from "./components/Shop/Shop";
 import ShippingInfo from "./components/ShippingInfo/ShippingInfo";
 import Stickers from "./components/Stickers/Stickers";
+import Charms from "./components/Charm/Charms";
 
 const App = () => {
   const contactRef = useRef(null);
@@ -34,6 +35,7 @@ const App = () => {
                   <Hero />
                   <Card />
                   <Stickers />
+                  <Charms />
                   <div ref={contactRef}>
                     <Contact />
                   </div>

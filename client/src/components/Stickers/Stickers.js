@@ -7,7 +7,7 @@ const Stickers = () => {
       <h2 className="stickers__title">Stickers</h2>
       <div className="stickers__container">
         <div className="stickers__wrapper">
-          <img className="stickers__image" src={Sticker} alt="Sticker" />
+          <img className="stickers__image" src={Sticker} alt="Charms" />
         </div>
         <div className="stickers__subtitle">
           <div className="stickers__subtitle-container">
