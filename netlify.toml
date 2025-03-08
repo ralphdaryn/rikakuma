@@ -1,16 +1,10 @@
 [build]
-  base = "client"  # Ensures dependencies are installed inside "client/"
-  command = "npm install && npm run build && npm install --prefix ../netlify/functions"
-  publish = "build"  # Make sure the built React app is deployed correctly
-  functions = "../netlify/functions"  # Use the correct path for serverless functions
+  base = "client"
+  command = "npm install && npm run build && npm install --prefix netlify/functions"
+  publish = "build"
+  functions = "netlify/functions"
 
 [[redirects]]
-  from = "/api/cart"
-  to = "/.netlify/functions/shopifyCart"
-  status = 200
-  force = true
-
-  [[redirects]]
   from = "/api/add-to-cart"
   to = "/.netlify/functions/addToCart"
   status = 200
