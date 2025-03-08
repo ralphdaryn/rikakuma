@@ -1,3 +1,5 @@
+@use "../../styles/partials/mixins" as *;
+
 .charms {
   padding: 1rem;
   &__title {
