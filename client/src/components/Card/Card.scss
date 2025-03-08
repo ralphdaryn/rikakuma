@@ -83,6 +83,9 @@
     align-items: center;
     gap: 1.5rem;
     margin: 1rem;
+    @include desktop {
+      gap: 3rem;
+    }
     &-welcome {
       display: flex;
       flex-direction: column;
