@@ -1,8 +1,8 @@
 [build]
   base = "client"
-  command = "npm install && npm run build && npm install --prefix netlify/functions"
+  command = "npm install && npm run build && npm install --prefix ../netlify/functions"
   publish = "build"
-  functions = "netlify/functions"
+  functions = "../netlify/functions"
 
 [[redirects]]
   from = "/api/add-to-cart"
