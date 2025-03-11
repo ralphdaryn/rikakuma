@@ -23,7 +23,7 @@
       max-width: 700px;
     }
     @include desktop {
-      max-width: 900px;
+      max-width: 1000px;
     }
     .swiper-wrapper {
       position: relative;
@@ -34,6 +34,9 @@
       right: 35px;
       @include tablet {
         right: 200px;
+      }
+      @include desktop {
+        right: 150px;
       }
     }
   }

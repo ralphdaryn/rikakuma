@@ -57,6 +57,7 @@
         gap: 0;
         @include desktop {
           gap: 2rem;
+          padding: 0 4rem;
         }
       }
     }
