@@ -1,6 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 import "./Stickers.scss";
 import Sticker1 from "../../assets/images/in_out_buddy.jpg";
 import Sticker2 from "../../assets/images/luna_buddy.jpg";
@@ -21,6 +23,8 @@ const Stickers = () => {
         spaceBetween={0}
         slidesPerView={1.3}
         pagination={{ clickable: true }}
+        navigation={true}
+        modules={[Navigation]}
         centeredSlides={true}
         breakpoints={{
           768: {

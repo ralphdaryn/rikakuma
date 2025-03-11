@@ -18,7 +18,7 @@
     width: 100%;
     display: flex;
     flex-grow: 0;
-    justify-content: center; // Centers content inside
+    justify-content: center;
     @include tablet {
       max-width: 700px;
     }
@@ -90,5 +90,17 @@
     &:hover {
       background-color: #483261;
     }
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #5a3e79;
+    width: 0.25rem;
+    height: 3rem;
+  }
+
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    color: #483261;
   }
 }
