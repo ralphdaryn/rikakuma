@@ -24,7 +24,7 @@ const Card = () => {
             </div>
             <h3 className="card__title">Featured Items:</h3>
             <p className="card__subtitle">Stickers!</p>
-            <Link to="/shop" className="card__button">
+            <Link to="/stickers" className="card__button-stickers">
               Shop
             </Link>{" "}
           </div>
@@ -33,8 +33,10 @@ const Card = () => {
         <div className="card__container">
           <div className="card__wrapper">
             <h3 className="card__title">Featured Items:</h3>
-            <p className="card__subtitle">Charms<br></br>(Key Chains)</p>
-            <Link to="/shop" className="card__button">
+            <p className="card__subtitle">
+              Charms<br></br>(Key Chains)
+            </p>
+            <Link to="/charms" className="card__button-charms">
               Shop
             </Link>{" "}
             <div className="card__image-container">

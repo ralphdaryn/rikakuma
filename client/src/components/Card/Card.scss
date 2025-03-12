@@ -151,5 +151,33 @@
     &:hover {
       background-color: #483261;
     }
+    &-stickers {
+      background-color: #5a3e79;
+      padding: 0.75rem 2.5rem;
+      border-radius: 16px;
+      color: #fff;
+      width: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 10rem;
+      &:hover {
+        background-color: #483261;
+      }
+    }
+    &-charms {
+      background-color: #5a3e79;
+      padding: 0.75rem 2.5rem;
+      border-radius: 16px;
+      color: #fff;
+      width: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 10rem;
+      &:hover {
+        background-color: #483261;
+      }
+    }
   }
 }
