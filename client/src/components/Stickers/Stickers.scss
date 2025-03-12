@@ -19,12 +19,15 @@
     display: flex;
     flex-grow: 0;
     justify-content: center;
+
     @include tablet {
       max-width: 700px;
     }
+
     @include desktop {
       max-width: 1000px;
     }
+
     .swiper-wrapper {
       position: relative;
       display: flex;
@@ -32,9 +35,11 @@
       flex-shrink: 0;
       justify-content: flex-start;
       right: 35px;
+
       @include tablet {
         right: 200px;
       }
+
       @include desktop {
         right: 150px;
       }
@@ -93,6 +98,7 @@
     justify-content: center;
     align-items: center;
     min-width: 10rem;
+
     &:hover {
       background-color: #483261;
     }
@@ -101,11 +107,11 @@
   /*** Custom Swiper Navigation Arrows ***/
   .swiper-button-next,
   .swiper-button-prev {
-    background-color: rgba(90, 62, 121, 0.8); // Semi-transparent background
+    background-color: rgba(90, 62, 121, 0.8);
     color: white;
-    width: 2.25rem; // Adjust width
-    height: 2.25rem; // Adjust height
-    border-radius: 50%; // Make them circular
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -113,13 +119,12 @@
     top: 60%;
 
     &::after {
-      font-size: 1.5rem; // Adjust arrow size
+      font-size: 1.5rem;
       font-weight: bold;
     }
 
     &:hover {
       background-color: #483261;
-      // transform: scale(1.1); // Slightly enlarge on hover
     }
   }
 
@@ -130,5 +135,48 @@
 
   .swiper-button-next {
     right: 0;
+  }
+}
+
+.stickers--page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+
+  .stickers__swiper {
+    width: 100%;
+  }
+
+  .stickers__slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  // ✅ Force `.swiper-wrapper` to be column-based only on `/stickers`
+  .swiper-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 700px;
+    background-color: #f8f8f8;
+    padding: 1.5rem;
+    border-radius: 10px;
+
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
   }
 }

@@ -1,13 +1,13 @@
 @use "../../styles/partials/mixins" as *;
 
 .contact {
-  margin: 1rem;
+  margin: 3rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   @include tablet {
-    margin-bottom: 4rem;
+    margin: 4rem;
   }
   &__container {
     width: 100%;

@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import { useLocation } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -15,8 +16,14 @@ const stickersData = [
 ];
 
 const Stickers = () => {
+  const location = useLocation(); 
+  const isStandalonePage = location.pathname === "/stickers";
   return (
-    <div className="stickers">
+    <div
+      className={`stickers ${
+        isStandalonePage ? "stickers--page" : "stickers--inline"
+      }`}
+    >
       <h2 className="stickers__title">Stickers</h2>
 
       <Swiper
