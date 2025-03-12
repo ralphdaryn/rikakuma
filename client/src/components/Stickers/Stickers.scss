@@ -173,6 +173,10 @@
 
     @include tablet {
       flex-direction: row;
+      right: 235px;
+    }
+    @include desktop {
+      right: 290px;
     }
   }
   .swiper-button-prev,
