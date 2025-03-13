@@ -5,14 +5,16 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./Charms.scss";
-import Charms1 from "../../assets/images/KUROMI_x_SONNY_ANGEL.jpg";
-import Charms2 from "../../assets/images/CINNAMOROLL_x_SONNY_ANGEL.jpg";
-import Charms3 from "../../assets/images/MIFFY_x_SONNY_ANGEL.jpg";
+import Charms1 from "../../assets/images/kuromi_x_sonny_angel.jpg";
+import Charms2 from "../../assets/images/my_melody_x_sonny_angel.jpg";
+import Charms4 from "../../assets/images/cinnamoroll_x_sonny_angel.jpg";
+import Charms3 from "../../assets/images/miffy_x_sonny_angel.jpg";
 
 const charmsData = [
   { id: 1, image: Charms1, name: "Kuromi x Sonny Angel", price: "$10.00" },
-  { id: 2, image: Charms2, name: "Cinnamoroll x Sonny Angel", price: "$10.00" },
+  { id: 2, image: Charms2, name: "My Melody x Sonny Angel", price: "$10.00" },
   { id: 3, image: Charms3, name: "Miffy x Sonny Angel", price: "$10.00" },
+  { id: 4, image: Charms4, name: "Cinnamoroll x Sonny Angel", price: "$10.00" },
 ];
 
 const Charms = () => {

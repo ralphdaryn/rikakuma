@@ -21,11 +21,11 @@
     justify-content: center;
 
     @include tablet {
-      max-width: 700px;
+      max-width: 650px;
     }
 
     @include desktop {
-      max-width: 1000px;
+      max-width: 1050px;
     }
 
     .swiper-wrapper {
@@ -41,7 +41,7 @@
       }
 
       @include desktop {
-        right: 150px;
+        right: 350px;
       }
     }
   }
@@ -146,6 +146,7 @@
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem 1rem;
+  background-color: #f8f8f8;
 
   .stickers__swiper {
     width: 100%;
@@ -167,16 +168,18 @@
     gap: 1.5rem;
     width: 100%;
     max-width: 700px;
-    background-color: #f8f8f8;
     padding: 1.5rem;
     border-radius: 10px;
 
     @include tablet {
       flex-direction: row;
+      flex-wrap: wrap;
       right: 235px;
+      gap: 2rem;
     }
     @include desktop {
       right: 290px;
+      gap: 3rem;
     }
   }
   .swiper-button-prev,
