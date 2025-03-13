@@ -1,191 +1,191 @@
-// @use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/mixins" as *;
 
-// .charms {
-//   padding: 1rem;
-//   text-align: center;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
+.charms {
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-//   &__title {
-//     text-align: center;
-//     font-size: 2rem;
-//     margin-bottom: 1rem;
-//   }
+  &__title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
 
-//   &__swiper {
-//     width: 100%;
-//     display: flex;
-//     flex-grow: 0;
-//     justify-content: center;
+  &__swiper {
+    width: 100%;
+    display: flex;
+    flex-grow: 0;
+    justify-content: center;
 
-//     @include tablet {
-//       max-width: 650px;
-//     }
+    @include tablet {
+      max-width: 650px;
+    }
 
-//     @include desktop {
-//       max-width: 950px;
-//     }
+    @include desktop {
+      max-width: 950px;
+    }
 
-//     .swiper-wrapper {
-//       position: relative;
-//       display: flex;
-//       flex-grow: 0;
-//       flex-shrink: 0;
-//       justify-content: flex-start;
-//       right: 35px;
+    .swiper-wrapper {
+      position: relative;
+      display: flex;
+      flex-grow: 0;
+      flex-shrink: 0;
+      justify-content: flex-start;
+      right: 35px;
 
-//       @include tablet {
-//         right: 200px;
-//       }
+      @include tablet {
+        right: 200px;
+      }
 
-//       @include desktop {
-//         right: 265px;
-//       }
-//     }
-//   }
+      @include desktop {
+        right: 265px;
+      }
+    }
+  }
 
-//   &__slide {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-//     flex: 0 0 210px;
-//   }
+  &__slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 210px;
+  }
 
-//   &__container {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//   }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-//   &__wrapper {
-//     display: flex;
-//     justify-content: center;
-//   }
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+  }
 
-//   &__image {
-//     width: 12rem;
-//     border-radius: 2rem;
-//   }
+  &__image {
+    width: 12rem;
+    border-radius: 2rem;
+  }
 
-//   &__subtitle {
-//     &-container {
-//       display: flex;
-//       flex-direction: column;
-//       align-items: center;
-//       margin-top: 1rem;
-//     }
-//   }
+  &__subtitle {
+    &-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1rem;
+    }
+  }
 
-//   &__text {
-//     font-size: 1.5rem;
-//   }
+  &__text {
+    font-size: 1.5rem;
+  }
 
-//   &__subtext {
-//     font-size: 1.2rem;
-//   }
+  &__subtext {
+    font-size: 1.2rem;
+  }
 
-//   &__button {
-//     margin-top: 0.5rem;
-//     background-color: #5a3e79;
-//     padding: 0.75rem 2.5rem;
-//     border-radius: 16px;
-//     color: #fff;
-//     width: fit-content;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     min-width: 10rem;
+  &__button {
+    margin-top: 0.5rem;
+    background-color: #5a3e79;
+    padding: 0.75rem 2.5rem;
+    border-radius: 16px;
+    color: #fff;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 10rem;
 
-//     &:hover {
-//       background-color: #483261;
-//     }
-//   }
+    &:hover {
+      background-color: #483261;
+    }
+  }
 
-//   /*** Custom Swiper Navigation Arrows ***/
-//   .swiper-button-next,
-//   .swiper-button-prev {
-//     background-color: rgba(90, 62, 121, 0.8);
-//     color: white;
-//     width: 2.25rem;
-//     height: 2.25rem;
-//     border-radius: 50%;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-//     top: 60%;
+  /*** Custom Swiper Navigation Arrows ***/
+  .swiper-button-next,
+  .swiper-button-prev {
+    background-color: rgba(90, 62, 121, 0.8);
+    color: white;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    top: 60%;
 
-//     &::after {
-//       font-size: 1.5rem;
-//       font-weight: bold;
-//     }
+    &::after {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
 
-//     &:hover {
-//       background-color: #483261;
-//     }
-//   }
+    &:hover {
+      background-color: #483261;
+    }
+  }
 
-//   // Position adjustments for Swiper arrows
-//   .swiper-button-prev {
-//     left: 0;
-//   }
+  // Position adjustments for Swiper arrows
+  .swiper-button-prev {
+    left: 0;
+  }
 
-//   .swiper-button-next {
-//     right: 0;
-//   }
-// }
+  .swiper-button-next {
+    right: 0;
+  }
+}
 
-// // ✅ Ensure Charms page has the same layout as Stickers page
-// .charms--page {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   max-width: 900px;
-//   margin: 0 auto;
-//   padding: 2rem 1rem;
-//   background-color: #f8f8f8;
+// ✅ Ensure Charms page has the same layout as Stickers page
+.charms--page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  background-color: #f8f8f8;
 
-//   .charms__swiper {
-//     width: 100%;
-//   }
+  .charms__swiper {
+    width: 100%;
+  }
 
-//   .charms__slide {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     text-align: center;
-//   }
+  .charms__slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 
-//   // ✅ Force `.swiper-wrapper` to be column-based only on `/charms`
-//   .swiper-wrapper {
-//     display: flex;
-//     flex-direction: column;
-//     flex-wrap: wrap;
-//     align-items: center;
-//     justify-content: center;
-//     gap: 1.5rem;
-//     width: 100%;
-//     max-width: 700px;
-//     padding: 1.5rem;
-//     border-radius: 10px;
+  // ✅ Force `.swiper-wrapper` to be column-based only on `/charms`
+  .swiper-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 700px;
+    padding: 1.5rem;
+    border-radius: 10px;
 
-//     @include tablet {
-//       flex-direction: row;
-//       right: 235px;
-//       gap: 2.5rem;
-//     }
-//     @include desktop {
-//       right: 290px;
-//     }
-//   }
+    @include tablet {
+      flex-direction: row;
+      right: 235px;
+      gap: 2.5rem;
+    }
+    @include desktop {
+      right: 290px;
+    }
+  }
 
-//   // ✅ Hide Swiper arrows on Charms page
-//   .swiper-button-prev,
-//   .swiper-button-next {
-//     display: none;
-//   }
-// }
+  // ✅ Hide Swiper arrows on Charms page
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+}
