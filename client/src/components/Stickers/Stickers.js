@@ -8,15 +8,25 @@ import "./Stickers.scss";
 import Sticker1 from "../../assets/images/in_out_buddy.jpg";
 import Sticker2 from "../../assets/images/luna_buddy.jpg";
 import Sticker3 from "../../assets/images/dan_the_penguin.jpg";
+import Sticker4 from "../../assets/images/brimduck_buddy.jpg";
+import Sticker5 from "../../assets/images/brimsicle_buddy.jpg";
+import Sticker6 from "../../assets/images/jett_knife_buddy.jpg";
+import Sticker7 from "../../assets/images/tanghulu_buddy.jpg";
+import Sticker8 from "../../assets/images/pizza_buddy.jpg";
 
 const stickersData = [
   { id: 1, image: Sticker1, name: "In and Out Buddies", price: "$2.00" },
   { id: 2, image: Sticker2, name: "Luna Buddy", price: "$2.00" },
   { id: 3, image: Sticker3, name: "Dan the Penguin", price: "$2.00" },
+  { id: 4, image: Sticker4, name: "Brimduck Buddy", price: "$2.00" },
+  { id: 5, image: Sticker5, name: "Brimsicle Buddy", price: "$2.00" },
+  { id: 6, image: Sticker6, name: "Jett Knife Buddy", price: "$2.00" },
+  { id: 7, image: Sticker7, name: "Tanghulu Buddy", price: "$2.00" },
+  { id: 8, image: Sticker8, name: "Pizza Buddy", price: "$2.00" },
 ];
 
 const Stickers = () => {
-  const location = useLocation(); 
+  const location = useLocation();
   const isStandalonePage = location.pathname === "/stickers";
   return (
     <div
