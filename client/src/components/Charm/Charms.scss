@@ -10,7 +10,6 @@
   gap: 2.5rem;
 
   &__title {
-    margin-top: 2rem;
     text-align: center;
     font-size: 2rem;
   }
@@ -145,10 +144,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 900px;
   margin: 0 auto;
-  padding: 2rem 1rem;
-  background-color: #f8f8f8;
+  padding: 1rem;
+  gap: 0;
 
   .charms__swiper {
     width: 100%;
@@ -176,11 +174,7 @@
 
     @include tablet {
       flex-direction: row;
-      right: 235px;
-      gap: 2.5rem;
-    }
-    @include desktop {
-      right: 290px;
+      flex-wrap: wrap;
     }
   }
 

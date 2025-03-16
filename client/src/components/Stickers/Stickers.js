@@ -64,7 +64,6 @@ const Stickers = () => {
       }`}
     >
       <h2 className="stickers__title">Stickers</h2>
-
       {/* First Row */}
       <Swiper
         spaceBetween={0}
