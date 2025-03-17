@@ -5,8 +5,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phoneNumber: "",
-    subject: "",
+    subject: "General",
     message: "",
   });
   const [status, setStatus] = useState("");
@@ -35,8 +34,7 @@ const Contact = () => {
         setFormData({
           name: "",
           email: "",
-          phoneNumber: "",
-          subject: "",
+          subject: "General",
           message: "",
         });
       } else {
@@ -83,30 +81,21 @@ const Contact = () => {
             onChange={handleChange}
           />
 
-          <label htmlFor="phoneNumber" className="contact__label">
-            Phone Number:
-          </label>
-          <input
-            type="text"
-            id="phoneNumber"
-            name="phoneNumber"
-            className="contact__input"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-          />
-
           <label htmlFor="subject" className="contact__label">
             Subject:
           </label>
-          <input
-            type="text"
+          <select
             id="subject"
             name="subject"
             className="contact__input"
             required
             value={formData.subject}
             onChange={handleChange}
-          />
+          >
+            <option value="General">General</option>
+            <option value="Order Information">Order Information</option>
+            <option value="Feedback">Feedback</option>
+          </select>
 
           <label htmlFor="message" className="contact__label">
             Message:
