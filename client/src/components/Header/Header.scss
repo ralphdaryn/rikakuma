@@ -27,11 +27,10 @@
 
     @include desktop {
       display: flex;
+      justify-content: flex-end;
       flex-direction: row-reverse;
       position: relative;
-      right: -220px;
-      gap: 1rem;
-      
+      right: -500px;
     }
   }
 
@@ -41,7 +40,7 @@
 
   &__cart-text {
     font-size: 1rem;
-    font-weight: bold;
+    font-family: "Nunito-Bold";
     display: none;
     @include tablet {
       display: block;
