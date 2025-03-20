@@ -20,14 +20,14 @@
     gap: 0.5rem;
     cursor: pointer;
     font-size: 1.2rem;
-    
+    flex-direction: column;
     &:hover {
       color: #c9f8ff;
     }
 
     @include desktop {
-      position: absolute;
-      right: 12rem;
+      display: flex;
+      flex-direction: row;
     }
   }
 
@@ -38,6 +38,10 @@
   &__cart-text {
     font-size: 1rem;
     font-weight: bold;
+    display: none;
+    @include tablet {
+      display: block;
+    }
   }
 
   &__wrapper {
@@ -55,6 +59,7 @@
       justify-content: center;
       position: relative;
       padding: 1rem 5rem;
+      gap: 3rem;
     }
 
     & > .header__menu-icon {
@@ -87,11 +92,14 @@
     width: 8rem;
     height: 8rem;
     display: block;
-
+    @include tablet {
+      position: relative;
+      left: 25px;
+    }
     @include desktop {
       width: 12rem;
       height: 12rem;
-      margin: 0 auto;
+      left: 0;
     }
   }
 
@@ -142,11 +150,11 @@
         .header__navlink {
           display: flex;
           justify-content: flex-start;
-          align-items: center; 
-          gap: 0.5rem; 
+          align-items: center;
+          gap: 0.5rem;
           text-decoration: none;
           color: white;
-          transition: color 0.3s ease; 
+          transition: color 0.3s ease;
           cursor: pointer;
 
           @include desktop {
@@ -168,4 +176,3 @@
     }
   }
 }
-
