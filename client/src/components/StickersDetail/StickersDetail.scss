@@ -1,0 +1,110 @@
+// src/components/StickerDetail/StickerDetail.scss
+@use "../../styles/partials/mixins" as *;
+
+.sticker-detail {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Nunito", sans-serif;
+  background-color: #f9f5ff;
+
+  &__back {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #5a3e79;
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #483261;
+      text-decoration: underline;
+    }
+  }
+
+  &__back-icon {
+    font-size: 1.2rem;
+  }
+
+  &__back-text {
+    font-size: 1rem;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 2rem;
+    box-shadow: 0 8px 24px rgba(90, 62, 121, 0.1);
+    padding: 2rem;
+    max-width: 900px;
+    width: 100%;
+    align-items: center;
+
+    @include tablet {
+      flex-direction: row;
+      gap: 3rem;
+    }
+  }
+
+  &__image {
+    width: 220px;
+    border-radius: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    @include tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__info {
+    text-align: center;
+
+    @include tablet {
+      text-align: left;
+    }
+  }
+
+  &__name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #5a3e79;
+  }
+
+  &__price {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  &__description {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  &__add-to-cart {
+    background-color: #5a3e79;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #483261;
+    }
+  }
+}

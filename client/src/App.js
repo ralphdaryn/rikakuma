@@ -12,6 +12,7 @@ import Shop from "./components/Shop/Shop";
 import ShippingInfo from "./components/ShippingInfo/ShippingInfo";
 import Stickers from "./components/Stickers/Stickers";
 import Charms from "./components/Charm/Charms";
+import StickersDetail from "./components/StickersDetail/StickersDetail";
 
 const App = () => {
   const contactRef = useRef(null);
@@ -46,6 +47,7 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/stickers" element={<Stickers />} />
             <Route path="/charms" element={<Charms />} />
+            <Route path="/stickers/:id" element={<StickersDetail />} />
             <Route
               path="*"
               element={<h2 className="not-found">Page Not Found</h2>}
