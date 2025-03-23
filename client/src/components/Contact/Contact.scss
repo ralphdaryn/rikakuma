@@ -51,7 +51,7 @@
   &__form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: .5rem;
     width: 100%;
   }
 
@@ -64,7 +64,7 @@
   &__input,
   &__textarea {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.5rem;
     border: 1px solid #ccc; /* Default border color */
     border-radius: 4px;
     font-size: 1rem;
