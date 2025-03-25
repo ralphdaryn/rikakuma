@@ -14,6 +14,7 @@ import Stickers from "./components/Stickers/Stickers";
 import Charms from "./components/Charm/Charms";
 import StickersDetail from "./components/StickersDetail/StickersDetail";
 import CharmsDetail from "./components/CharmsDetail/CharmsDetail";
+import Cart from './components/Cart/Cart';
 
 const App = () => {
   const contactRef = useRef(null);
@@ -50,6 +51,7 @@ const App = () => {
             <Route path="/charms" element={<Charms />} />
             <Route path="/stickers/:id" element={<StickersDetail />} />
             <Route path="/charms/:id" element={<CharmsDetail />} />
+            <Route path="/cart" element={<Cart />} />
             <Route
               path="*"
               element={<h2 className="not-found">Page Not Found</h2>}
