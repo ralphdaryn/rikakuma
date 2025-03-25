@@ -36,6 +36,7 @@
 
   &__cart {
     position: relative;
+    font-size: 2rem;
 
     &-count {
       position: absolute;
@@ -46,7 +47,7 @@
       border-radius: 50%;
       width: 1.2rem;
       height: 1.2rem;
-      font-size: 0.7rem;
+      font-size: 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -56,11 +57,11 @@
   }
 
   &__cart-text {
-    font-size: 1rem;
     font-family: "Nunito-Bold";
     display: none;
     @include tablet {
       display: block;
+      font-size: 1rem;
     }
     @include desktop {
       font-size: 1.5rem;
