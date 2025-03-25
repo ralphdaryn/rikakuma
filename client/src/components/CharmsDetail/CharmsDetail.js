@@ -1,11 +1,13 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { charms } from "../../data/CharmsData";
 import { FaArrowLeft } from "react-icons/fa";
+import { useCart } from "../../context/CartContext"; // ✅
 import "./CharmsDetail.scss";
 
 const CharmsDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { addToCart } = useCart(); // ✅
 
   const charm = charms.find((c) => c.id === parseInt(id, 10));
 
@@ -22,15 +24,18 @@ const CharmsDetail = () => {
 
       <div className="charm-detail__card">
         <img className="charm-detail__image" src={charm.image} alt={charm.name} />
-
         <div className="charm-detail__info">
           <h2 className="charm-detail__name">{charm.name}</h2>
           <p className="charm-detail__price">{charm.price}</p>
           <p className="charm-detail__description">
-            This adorable charm is crafted to add a spark of cuteness to your bags, phones, or keys.
-            <strong> {charm.name}</strong> makes the perfect accessory!
+            This adorable charm makes the perfect accessory!
           </p>
-          <button className="charm-detail__add-to-cart">Add to Cart</button>
+          <button
+            className="charm-detail__add-to-cart"
+            onClick={() => addToCart(charm)} // ✅
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>

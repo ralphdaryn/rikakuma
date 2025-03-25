@@ -11,14 +11,14 @@ import {
   FaShoppingCart,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../../context/CartContext"; // ✅
 
 const Header = ({ onContactClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { cartCount } = useCart(); // ✅
 
-  const toggleMenu = () => {
-    setIsMenuOpen((prevState) => !prevState);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const handleContactClick = () => {
     navigate("/");
@@ -28,8 +28,7 @@ const Header = ({ onContactClick }) => {
   };
 
   const handleCartClick = () => {
-    // Redirect to Shopify cart instead of React Router cart page
-    window.location.href = "https://vd871k-pc.myshopify.com/cart";
+    navigate("/cart");
   };
 
   return (
@@ -53,10 +52,12 @@ const Header = ({ onContactClick }) => {
               />
             </span>
           </div>
-          {/* 🛒 Shopify Cart Redirection */}
           <div className="header__cart" onClick={handleCartClick}>
             <FaShoppingBag className="header__cart-icon" />
             <span className="header__cart-text">View Cart</span>
+            {cartCount > 0 && (
+              <span className="header__cart-count">{cartCount}</span>
+            )}
           </div>
         </div>
       </div>
