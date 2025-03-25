@@ -1,99 +1,60 @@
 import "./Shop.scss";
-import { useEffect, useState } from "react";
-import { fetchProducts } from "../../utils/shopifyClient";
+import { useNavigate } from "react-router-dom";
+import { stickers } from "../../data/StickersData";
+import { charms } from "../../data/CharmsData";
 
 const Shop = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const getProducts = async () => {
-      setLoading(true);
-      try {
-        const data = await fetchProducts();
-        console.log("✅ Fetched Products:", data);
-        setProducts(data || []);
-      } catch (error) {
-        console.error("🔥 Error fetching products:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const handleStickerClick = (sticker) => {
+    navigate(`/stickers/${sticker.id}`, { state: { sticker } });
+  };
 
-    getProducts();
-  }, []);
-
-  const addToCartHandler = (variantId) => {
-    if (!variantId) {
-      console.error("❌ Variant ID is missing!", variantId);
-      return;
-    }
-
-    // Extract numeric variant ID from Shopify's GraphQL ID format
-    const numericVariantId = variantId.split("/").pop(); // Extracts '42961786404915'
-
-    if (!numericVariantId || isNaN(numericVariantId)) {
-      console.error("❌ Extracted Variant ID is invalid!", numericVariantId);
-      return;
-    }
-
-    console.log("🛍️ Adding to Shopify cart:", numericVariantId);
-
-    // Redirect user to Shopify cart (not checkout)
-    window.location.href = `https://vd871k-pc.myshopify.com/cart/add?id=${numericVariantId}&quantity=1`;
+  const handleCharmClick = (charm) => {
+    navigate(`/charms/${charm.id}`, { state: { charm } });
   };
 
   return (
     <div className="shop">
-      <h1 className="shop__title">Products</h1>
+      <h2 className="shop__title">Shop All</h2>
 
-      {loading ? (
-        <p className="shop__loading">Loading products...</p>
-      ) : products.length > 0 ? (
-        <div className="shop__container">
-          {products.map((product) => {
-            const hasVariants = product?.variants?.edges?.length > 0;
-            const variantNode = hasVariants
-              ? product.variants.edges[0].node
-              : null;
-            const variantId = variantNode?.id;
-            const isAvailable = variantNode?.availableForSale;
-
-            return (
-              <div className="shop__card" key={product.id}>
-                <h2 className="shop__name">{product.title}</h2>
-                {product.images?.edges?.[0]?.node?.src ? (
-                  <img
-                    className="shop__image"
-                    src={product.images.edges[0].node.src}
-                    alt={product.title}
-                  />
-                ) : (
-                  <p>No image available</p>
-                )}
-                <p className="shop__description">{product.description}</p>
-                <div className="shop__price">
-                  ${product?.priceRange?.minVariantPrice?.amount}{" "}
-                  {product?.priceRange?.minVariantPrice?.currencyCode}
-                </div>
-
-                {isAvailable ? (
-                  <button
-                    className="shop__cart-button"
-                    onClick={() => addToCartHandler(variantId)}
-                  >
-                    Add to Cart 🛒
-                  </button>
-                ) : (
-                  <p className="shop__out-of-stock">Out of stock</p>
-                )}
-              </div>
-            );
-          })}
+      <div className="shop__section">
+        <h3 className="shop__section-title">Stickers</h3>
+        <div className="shop__list">
+          {stickers.map((sticker) => (
+            <div
+              key={sticker.id}
+              className="shop__item"
+              onClick={() => handleStickerClick(sticker)}
+            >
+              <img
+                src={sticker.image}
+                alt={sticker.name}
+                className="shop__image"
+              />
+              <h3 className="shop__name">{sticker.name}</h3>
+              <p className="shop__price">{sticker.price}</p>
+            </div>
+          ))}
         </div>
-      ) : (
-        <p className="shop__no-products">No products available.</p>
-      )}
+      </div>
+
+      <div className="shop__section">
+        <h3 className="shop__section-title">Charms (Keychains)</h3>
+        <div className="shop__list">
+          {charms.map((charm) => (
+            <div
+              key={charm.id}
+              className="shop__item"
+              onClick={() => handleCharmClick(charm)}
+            >
+              <img src={charm.image} alt={charm.name} className="shop__image" />
+              <h3 className="shop__name">{charm.name}</h3>
+              <p className="shop__price">{charm.price}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

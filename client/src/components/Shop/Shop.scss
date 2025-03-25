@@ -1,187 +1,79 @@
 @use "../../styles/partials/mixins" as *;
 
 .shop {
-  color: #333;
-  min-height: 100vh;
   padding: 2rem;
-  background-color: #f9f9f9; /* Light background for better contrast */
+  text-align: center;
+
+  &__section {
+    margin-bottom: 3rem;
+  }
+
+  &__section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #5a3e79;
+  }
+
 
   &__title {
-    margin-top: 1rem;
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-align: center;
-    color: #1a202c; /* Dark gray */
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    font-size: 2rem;
+    margin-bottom: 2rem;
   }
 
-  &__container {
+  &__list {
     display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
-    justify-content: center; /* Centers cards */
-    gap: 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem;
+
+    @include tablet {
+      flex-direction: row;
+    }
+
+    @include desktop {
+      gap: 2.5rem;
+    }
   }
 
-  &__card {
-    background-color: #ffffff;
-    border: 1px solid #e2e8f0; /* Light gray border */
-    border-radius: 12px;
-    padding: 1.5rem;
-    text-align: center;
-    width: calc(33.33% - 2rem); /* 3 cards per row, adjust for spacing */
-    max-width: 300px;
-    min-width: 250px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  &__item {
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    width: 100%;
+    max-width: 240px;
+
+    @include tablet {
+      width: 45%;
+    }
+
+    @include desktop {
+      width: 200px;
+    }
 
     &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      transform: scale(1.05);
     }
   }
 
   &__image {
     width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 1rem;
+    height: auto;
+    border-radius: 1rem;
   }
 
   &__name {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 0.8rem;
-    color: #2d3748;
-    text-transform: capitalize;
-  }
-
-  &__description {
-    font-size: 1rem;
-    color: #718096;
-    margin-bottom: 1rem;
-    line-height: 1.5;
+    margin-top: 0.5rem;
   }
 
   &__price {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #38a169;
-    margin: 1rem;
-  }
-
-  &__price:hover {
-    color: #2f855a;
-    text-decoration: underline;
-  }
-
-  &__buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 1rem;
-  }
-
-  /* Add to Cart Button */
-  &__cart-button {
-    background-color: #fd82c3;
-    color: #fff;
-    border: none;
-    padding: 10px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: background 0.3s, transform 0.2s;
-    width: 100%;
-
-
-    &:hover {
-      background-color: #fd9bcf;
-      transform: translateY(-2px);
-    }
-
-    &:active {
-      background-color: #fd9bcf;
-      transform: translateY(0);
-    }
-  }
-
-  /* Buy Now Button */
-  &__checkout-button {
-    background-color: #ea4c89; /* Shopify pink */
-    color: white;
-    border: none;
-    padding: 10px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: background 0.3s, transform 0.2s;
-    width: 100%;
-
-    &:hover {
-      background-color: #d83b78;
-      transform: translateY(-2px);
-    }
-
-    &:active {
-      background-color: #c83264;
-      transform: translateY(0);
-    }
-
-    &:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
-  }
-
-  /* View Cart Button */
-  &__view-cart {
-    display: block;
-    margin: 2rem auto;
-    padding: 12px 18px;
-    background-color: #2563eb; /* Shopify blue */
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-
-    &:hover {
-      background-color: #1e4bb8;
-      transform: translateY(-2px);
-    }
-
-    &:active {
-      background-color: #16388a;
-      transform: translateY(0);
-    }
-  }
-
-  /* Out of Stock Text */
-  &__out-of-stock {
-    color: #dc2626; /* Shopify red */
-    font-weight: bold;
-    margin-top: 1rem;
-  }
-
-  /* Responsive adjustments */
-  @include tablet {
-    .shop__card {
-      width: calc(50% - 2rem); /* 2 cards per row on smaller screens */
-    }
-  }
-
-  @include desktop {
-    .shop__card {
-      width: calc(33.33% - 2rem); /* 3 cards per row on larger screens */
-    }
+    font-size: 0.95rem;
+    color: #555;
   }
 }
