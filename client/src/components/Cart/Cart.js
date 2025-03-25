@@ -73,11 +73,11 @@ const Cart = () => {
             <p>Total Items: {cartCount}</p>
             <p>Subtotal: ${getTotalPrice()}</p>
             <div className="cart-page__buttons">
-              <button className="cart-page__checkout" onClick={handleCheckout}>
-                Checkout
-              </button>
               <button className="cart-page__clear" onClick={clearCart}>
                 Clear Cart
+              </button>
+              <button className="cart-page__checkout" onClick={handleCheckout}>
+                Checkout
               </button>
             </div>
           </div>
