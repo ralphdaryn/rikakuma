@@ -21,18 +21,28 @@ const Cart = () => {
   };
 
   const handleCheckout = async () => {
-    const response = await fetch(
-      "/.netlify/functions/create-checkout-session",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items: cart }),
+    try {
+      const response = await fetch(
+        "/.netlify/functions/create-checkout-session",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ items: cart }),
+        }
+      );
+  
+      const data = await response.json();
+  
+      if (!response.ok) {
+        throw new Error(data.error || "Checkout failed");
       }
-    );
-
-    const data = await response.json();
-    window.location.href = data.url;
-  };
+  
+      window.location.href = data.url;
+    } catch (err) {
+      console.error("Checkout error:", err.message);
+      alert("Something went wrong during checkout.");
+    }
+  };  
 
   return (
     <div className="cart-page">
