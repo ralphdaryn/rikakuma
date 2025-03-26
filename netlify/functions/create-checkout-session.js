@@ -4,6 +4,8 @@ exports.handler = async (event) => {
   try {
     const { items } = JSON.parse(event.body);
 
+    console.log("CLIENT_URL from env:", process.env.CLIENT_URL);
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: items.map((item) => ({
@@ -11,7 +13,7 @@ exports.handler = async (event) => {
           currency: "usd",
           product_data: {
             name: item.name,
-            images: [item.image], // optional
+            images: [item.image],
           },
           unit_amount: Math.round(parseFloat(item.price.replace("$", "")) * 100),
         },
