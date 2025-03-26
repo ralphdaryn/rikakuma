@@ -4,10 +4,11 @@ exports.handler = async (event) => {
   try {
     const { items } = JSON.parse(event.body);
 
-    const successUrl = "http://localhost:3000/success";
-    const cancelUrl = "http://localhost:3000/cancel";
+    const successUrl = `${process.env.CLIENT_URL}/success`;
+    const cancelUrl = `${process.env.CLIENT_URL}/cancel`;
 
     console.log("✅ Stripe Key Exists:", !!process.env.STRIPE_SECRET_KEY);
+    console.log("✅ CLIENT_URL:", process.env.CLIENT_URL);
     console.log("✅ Items:", items);
     console.log("✅ Success URL:", successUrl);
     console.log("✅ Cancel URL:", cancelUrl);
@@ -19,7 +20,6 @@ exports.handler = async (event) => {
           currency: "usd",
           product_data: {
             name: item.name,
-            // images removed to prevent Stripe "Not a valid URL" error
           },
           unit_amount: Math.round(
             parseFloat(item.price.replace("$", "")) * 100
