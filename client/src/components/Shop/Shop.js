@@ -22,11 +22,7 @@ const Shop = () => {
         <h3 className="shop__section-title">Stickers</h3>
         <div className="shop__list">
           {stickers.map((sticker) => (
-            <div
-              key={sticker.id}
-              className="shop__item"
-              onClick={() => handleStickerClick(sticker)}
-            >
+            <div key={sticker.id} className="shop__item">
               <img
                 src={sticker.image}
                 alt={sticker.name}
@@ -34,6 +30,12 @@ const Shop = () => {
               />
               <h3 className="shop__name">{sticker.name}</h3>
               <p className="shop__price">{sticker.price}</p>
+              <button
+                className="shop__button"
+                onClick={() => handleStickerClick(sticker)}
+              >
+                View Details
+              </button>
             </div>
           ))}
         </div>
@@ -43,14 +45,16 @@ const Shop = () => {
         <h3 className="shop__section-title">Charms (Keychains)</h3>
         <div className="shop__list">
           {charms.map((charm) => (
-            <div
-              key={charm.id}
-              className="shop__item"
-              onClick={() => handleCharmClick(charm)}
-            >
+            <div key={charm.id} className="shop__item">
               <img src={charm.image} alt={charm.name} className="shop__image" />
               <h3 className="shop__name">{charm.name}</h3>
               <p className="shop__price">{charm.price}</p>
+              <button
+                className="shop__button"
+                onClick={() => handleCharmClick(charm)}
+              >
+                View Details
+              </button>
             </div>
           ))}
         </div>
