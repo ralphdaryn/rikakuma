@@ -7,12 +7,6 @@ exports.handler = async (event) => {
     const successUrl = `${process.env.CLIENT_URL}/success`;
     const cancelUrl = `${process.env.CLIENT_URL}/cancel`;
 
-    console.log("✅ Stripe Key Exists:", !!process.env.STRIPE_SECRET_KEY);
-    console.log("✅ CLIENT_URL:", process.env.CLIENT_URL);
-    console.log("✅ Items:", items);
-    console.log("✅ Success URL:", successUrl);
-    console.log("✅ Cancel URL:", cancelUrl);
-
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: items.map((item) => ({
