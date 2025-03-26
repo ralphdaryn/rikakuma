@@ -15,8 +15,8 @@ import Charms from "./components/Charm/Charms";
 import StickersDetail from "./components/StickersDetail/StickersDetail";
 import CharmsDetail from "./components/CharmsDetail/CharmsDetail";
 import Cart from "./components/Cart/Cart";
-import Success from "./pages/Success";
-import Cancel from "./pages/Cancel";
+import Success from "./pages/Success/Success";
+import Cancel from "./pages/Cancel/Cancel";
 
 const App = () => {
   const contactRef = useRef(null);
