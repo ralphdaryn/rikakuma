@@ -4,11 +4,11 @@ import logo from "../../assets/images/rikakumalogo.jpeg";
 import {
   FaBars,
   FaTimes,
-  FaShoppingBag,
   FaHome,
   FaInfoCircle,
   FaEnvelope,
   FaShoppingCart,
+  FaShoppingBag
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext"; // ✅
@@ -53,7 +53,7 @@ const Header = ({ onContactClick }) => {
             </span>
           </div>
           <div className="header__cart" onClick={handleCartClick}>
-            <FaShoppingBag className="header__cart-icon" />
+            <FaShoppingCart className="header__cart-icon" />
             <span className="header__cart-text">View Cart</span>
             {cartCount > 0 && (
               <span className="header__cart-count">{cartCount}</span>
@@ -71,7 +71,7 @@ const Header = ({ onContactClick }) => {
           </li>
           <li className="header__nav-list__item">
             <span className="header__navlink" onClick={() => navigate("/shop")}>
-              <FaShoppingCart /> Shop
+              <FaShoppingBag /> Shop
             </span>
           </li>
           <li className="header__nav-list__item">
