@@ -4,7 +4,13 @@ exports.handler = async (event) => {
   try {
     const { items } = JSON.parse(event.body);
 
-    console.log("CLIENT_URL from env:", process.env.CLIENT_URL);
+    const successUrl = "http://localhost:3000/success";
+    const cancelUrl = "http://localhost:3000/cancel";
+
+    console.log("✅ Stripe Key Exists:", !!process.env.STRIPE_SECRET_KEY);
+    console.log("✅ Items:", items);
+    console.log("✅ Success URL:", successUrl);
+    console.log("✅ Cancel URL:", cancelUrl);
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
@@ -13,15 +19,17 @@ exports.handler = async (event) => {
           currency: "usd",
           product_data: {
             name: item.name,
-            images: [item.image],
+            // images removed to prevent Stripe "Not a valid URL" error
           },
-          unit_amount: Math.round(parseFloat(item.price.replace("$", "")) * 100),
+          unit_amount: Math.round(
+            parseFloat(item.price.replace("$", "")) * 100
+          ),
         },
         quantity: item.quantity,
       })),
       mode: "payment",
-      success_url: `${process.env.CLIENT_URL}/success`,
-      cancel_url: `${process.env.CLIENT_URL}/cancel`,
+      success_url: successUrl,
+      cancel_url: cancelUrl,
       shipping_address_collection: {
         allowed_countries: ["US", "CA"],
       },
@@ -32,7 +40,7 @@ exports.handler = async (event) => {
       body: JSON.stringify({ url: session.url }),
     };
   } catch (error) {
-    console.error("Stripe checkout error:", error.message);
+    console.error("🔥 Stripe Error:", error.message);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: error.message }),
