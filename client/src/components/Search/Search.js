@@ -1,74 +1,38 @@
-import { useState } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Search.scss";
-
-const SHOPIFY_STORE_DOMAIN = "vd871k-pc.myshopify.com"; 
-const SHOPIFY_ACCESS_TOKEN = "fbcd43b1623533712a01dcbc907bbe1d"; 
+import { stickers } from "../../data/StickersData";
+import { charms } from "../../data/CharmsData";
 
 const Search = () => {
   const [query, setQuery] = useState("");
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [filteredResults, setFilteredResults] = useState([]);
+  const navigate = useNavigate();
 
-  const fetchProducts = async (searchTerm) => {
-    if (!searchTerm) {
-      setProducts([]);
+  useEffect(() => {
+    if (!query) {
+      setFilteredResults([]);
       return;
     }
 
-    setLoading(true);
+    const lowerQuery = query.toLowerCase();
 
-    const queryString = `
-      {
-        products(first: 5, query: "${searchTerm}") {
-          edges {
-            node {
-              id
-              title
-              handle
-              featuredImage {
-                url
-              }
-              variants(first: 1) {
-                edges {
-                  node {
-                    price {
-                      amount
-                      currencyCode
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    `;
+    const stickerResults = stickers
+      .filter((item) => item.name.toLowerCase().includes(lowerQuery))
+      .map((item) => ({ ...item, type: "stickers" }));
 
-    try {
-      const response = await axios.post(
-        `https://${SHOPIFY_STORE_DOMAIN}/api/2023-04/graphql.json`,
-        { query: queryString },
-        {
-          headers: {
-            "X-Shopify-Storefront-Access-Token": SHOPIFY_ACCESS_TOKEN,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+    const charmResults = charms
+      .filter((item) => item.name.toLowerCase().includes(lowerQuery))
+      .map((item) => ({ ...item, type: "charms" }));
 
-      setProducts(response.data.data.products.edges);
-    } catch (error) {
-      console.error("Error fetching products:", error);
-    }
+    setFilteredResults([...stickerResults, ...charmResults]);
+  }, [query]);
 
-    setLoading(false);
-  };
-
-  const handleInputChange = (e) => {
-    const searchTerm = e.target.value;
-    setQuery(searchTerm);
-    fetchProducts(searchTerm);
+  const handleSelectItem = (item) => {
+    navigate(`/${item.type}/${item.id}`, {
+      state: { [item.type.slice(0, -1)]: item },
+    });
+    setQuery(""); // Optional: clear search after navigation
   };
 
   return (
@@ -85,30 +49,23 @@ const Search = () => {
         placeholder="Type to search..."
         aria-label="Search"
         value={query}
-        onChange={handleInputChange}
+        onChange={(e) => setQuery(e.target.value)}
       />
-      {loading && <p className="search__loading">Loading...</p>}
 
-      {/* Display search results */}
-      {products.length > 0 && (
+      {filteredResults.length > 0 && (
         <div className="search__results">
-          {products.map(({ node }) => (
-            <a
-              key={node.id}
-              href={`https://${SHOPIFY_STORE_DOMAIN}/products/${node.handle}`}
-              target="_blank"
-              rel="noopener noreferrer"
+          {filteredResults.map((item) => (
+            <div
+              key={item.id}
               className="search__result-item"
+              onClick={() => handleSelectItem(item)}
             >
-              <img src={node.featuredImage?.url} alt={node.title} width="50" />
+              <img src={item.image} alt={item.name} width="50" />
               <div>
-                <p className="search__result-title">{node.title}</p>
-                <p className="search__result-price">
-                  {node.variants.edges[0].node.price.amount}{" "}
-                  {node.variants.edges[0].node.price.currencyCode}
-                </p>
+                <p className="search__result-title">{item.name}</p>
+                <p className="search__result-price">{item.price}</p>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       )}
