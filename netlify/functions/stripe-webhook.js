@@ -9,7 +9,7 @@ exports.handler = async (event) => {
     webhookEvent = stripe.webhooks.constructEvent(
       event.body,
       sig,
-      process.env.STRIPE_WEBHOOK_SECRET // You’ll get this from Stripe (see notes below)
+      process.env.STRIPE_WEBHOOK_SECRET
     );
   } catch (err) {
     console.error("Webhook signature verification failed:", err.message);
@@ -18,7 +18,6 @@ exports.handler = async (event) => {
 
   if (webhookEvent.type === "checkout.session.completed") {
     const session = webhookEvent.data.object;
-
     const customerEmail = session.customer_details.email;
     const customerName = session.customer_details.name;
 
@@ -36,7 +35,9 @@ exports.handler = async (event) => {
         from: `"Rikakuma Shop" <${process.env.EMAIL_USER}>`,
         to: customerEmail,
         subject: "🎉 Order Confirmation - Rikakuma",
-        text: `Hi ${customerName || "there"},\n\nThank you for your order! We'll be shipping it to you shortly.`,
+        text: `Hi ${
+          customerName || "there"
+        },\n\nThank you for your order! We'll be shipping it to you shortly.`,
       });
 
       console.log("✅ Confirmation email sent to", customerEmail);
@@ -44,7 +45,7 @@ exports.handler = async (event) => {
       console.error("❌ Error sending confirmation email:", emailErr.message);
     }
 
-    // 📦 You’ll integrate EasyPost here later
+    // 📝 Save order to database or create shipping label with EasyPost here (coming soon)
   }
 
   return { statusCode: 200, body: "Webhook received" };

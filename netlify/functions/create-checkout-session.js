@@ -4,7 +4,7 @@ exports.handler = async (event) => {
   try {
     const { items } = JSON.parse(event.body);
 
-    const successUrl = `${process.env.CLIENT_URL}/success`;
+    const successUrl = `${process.env.CLIENT_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`;
     const cancelUrl = `${process.env.CLIENT_URL}/cancel`;
 
     const session = await stripe.checkout.sessions.create({
@@ -22,7 +22,7 @@ exports.handler = async (event) => {
         quantity: item.quantity,
       })),
       mode: "payment",
-      success_url: successUrl,
+      success_url: successUrl, // 👈 Updated to include session_id
       cancel_url: cancelUrl,
       shipping_address_collection: {
         allowed_countries: ["US", "CA"],
