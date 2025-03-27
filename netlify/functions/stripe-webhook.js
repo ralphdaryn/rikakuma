@@ -21,7 +21,6 @@ exports.handler = async (event) => {
     const customerEmail = session.customer_details.email;
     const customerName = session.customer_details.name;
 
-    // ✅ Send confirmation email
     try {
       const transporter = nodemailer.createTransport({
         service: "gmail",
@@ -44,8 +43,6 @@ exports.handler = async (event) => {
     } catch (emailErr) {
       console.error("❌ Error sending confirmation email:", emailErr.message);
     }
-
-    // 📝 Save order to database or create shipping label with EasyPost here (coming soon)
   }
 
   return { statusCode: 200, body: "Webhook received" };

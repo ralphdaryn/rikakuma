@@ -22,7 +22,7 @@ exports.handler = async (event) => {
         quantity: item.quantity,
       })),
       mode: "payment",
-      success_url: successUrl, // 👈 Updated to include session_id
+      success_url: successUrl,
       cancel_url: cancelUrl,
       shipping_address_collection: {
         allowed_countries: ["US", "CA"],
