@@ -24,12 +24,20 @@
     margin-bottom: 1rem;
     font-size: 0.9rem;
 
-    @include tablet {
-      font-size: 1rem;
+    span {
+      display: block;
+      margin-bottom: 0.25rem;
     }
 
     strong {
+      display: block;
+      word-break: break-all;
+      font-size: 0.9rem;
       color: #a864c1;
+    }
+
+    @include tablet {
+      font-size: 1rem;
     }
   }
 
@@ -85,10 +93,17 @@
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
       background-color: darken(#a864c1, 10%);
     }
+  }
+
+  &__icon {
+    margin-right: 0.5rem;
   }
 
   @include tablet {

@@ -1,6 +1,7 @@
-import './ConfirmationPage.scss';
+import "./ConfirmationPage.scss";
 import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
+import { FaShoppingBag } from "react-icons/fa";
 
 const ConfirmationPage = () => {
   const [searchParams] = useSearchParams();
@@ -33,9 +34,10 @@ const ConfirmationPage = () => {
     <div className="confirmation">
       <h1 className="confirmation__heading">🎉 Thanks for your order!</h1>
 
-      <p className="confirmation__order-id">
-        Order ID: <strong>{id}</strong>
-      </p>
+      <div className="confirmation__order-id">
+        <span>Order ID:</span>
+        <strong>{id}</strong>
+      </div>
 
       <p className="confirmation__email">
         A confirmation email was sent to{" "}
@@ -55,6 +57,7 @@ const ConfirmationPage = () => {
       <p className="confirmation__total">${(amount_total / 100).toFixed(2)}</p>
 
       <button className="confirmation__button" onClick={() => navigate("/")}>
+        <FaShoppingBag className="confirmation__icon" />
         Continue Shopping
       </button>
     </div>
