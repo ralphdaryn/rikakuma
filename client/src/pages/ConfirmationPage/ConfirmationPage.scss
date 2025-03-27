@@ -1,0 +1,98 @@
+@use "../../styles/partials/mixins" as *;
+
+.confirmation {
+  padding: 1rem;
+  max-width: 100%;
+  margin: 0 auto;
+
+  &__heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+
+    @include tablet {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @include desktop {
+      font-size: 2.25rem;
+    }
+  }
+
+  &__order-id {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+
+    @include tablet {
+      font-size: 1rem;
+    }
+
+    strong {
+      color: #a864c1;
+    }
+  }
+
+  &__email {
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+
+    @include tablet {
+      font-size: 1rem;
+    }
+  }
+
+  &__section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+
+    @include tablet {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__shipping {
+    margin-bottom: 1rem;
+
+    p {
+      margin: 0.25rem 0;
+    }
+  }
+
+  &__total {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+
+    @include tablet {
+      font-size: 1.25rem;
+    }
+
+    @include desktop {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__button {
+    margin-top: 2rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #a864c1;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: darken(#a864c1, 10%);
+    }
+  }
+
+  @include tablet {
+    padding: 2rem;
+    max-width: 600px;
+  }
+}
