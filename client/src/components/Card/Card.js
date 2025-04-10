@@ -23,7 +23,7 @@ const Card = () => {
               <img className="card__image" src={stickerImg} alt="sticker pic" />
             </div>
             <h3 className="card__title">Featured Items:</h3>
-            <p className="card__subtitle">Stickers!</p>
+            <p className="card__subtitle"> Valorant Stickers!</p>
             <Link to="/stickers" className="card__button-stickers">
               Shop
             </Link>{" "}
@@ -34,7 +34,7 @@ const Card = () => {
           <div className="card__wrapper">
             <h3 className="card__title">Featured Items:</h3>
             <p className="card__subtitle">
-              Charms<br></br>(Key Chains)
+              Sonny Angel Charms!<br></br>(Key Chains)
             </p>
             <Link to="/charms" className="card__button-charms">
               Shop
