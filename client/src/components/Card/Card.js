@@ -33,9 +33,7 @@ const Card = () => {
         <div className="card__container">
           <div className="card__wrapper">
             <h3 className="card__title">Featured Items:</h3>
-            <p className="card__subtitle">
-              Sonny Angel Charms!<br></br>(Key Chains)
-            </p>
+            <p className="card__subtitle">Sonny Angel Charms!</p>
             <Link to="/charms" className="card__button-charms">
               Shop
             </Link>{" "}
