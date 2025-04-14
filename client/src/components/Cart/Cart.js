@@ -44,18 +44,6 @@ const Cart = () => {
     }
   };
 
-  const handleCreateShipment = async () => {
-    try {
-      const res = await fetch("/.netlify/functions/create-shipment");
-      const data = await res.json();
-      console.log("Shipment created:", data);
-      alert("Test shipment created. Check the console for details.");
-    } catch (err) {
-      console.error("Shipment error:", err.message);
-      alert("Failed to create test shipment.");
-    }
-  };
-
   return (
     <div className="cart-page">
       <h2 className="cart-page__title">Your Cart</h2>
@@ -100,12 +88,6 @@ const Cart = () => {
               </button>
               <button className="cart-page__checkout" onClick={handleCheckout}>
                 Checkout
-              </button>
-              <button
-                className="cart-page__checkout cart-page__shipment-test"
-                onClick={handleCreateShipment}
-              >
-                Test Shipment
               </button>
             </div>
           </div>
