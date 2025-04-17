@@ -12,13 +12,19 @@ const ConfirmationPage = () => {
   useEffect(() => {
     const fetchSession = async () => {
       try {
+        console.log("Session ID:", sessionId);
+
         const response = await fetch(
           `/.netlify/functions/getCheckoutSession?session_id=${sessionId}`
         );
-        const data = await response.json();
+
+        const text = await response.text();
+        console.log("🔍 Raw response:", text);
+
+        const data = JSON.parse(text);
         setSessionData(data);
       } catch (err) {
-        console.error("Error fetching session:", err);
+        console.error("❌ Error fetching session:", err);
       }
     };
 
@@ -28,7 +34,7 @@ const ConfirmationPage = () => {
   if (!sessionData)
     return <div className="confirmation">Loading your order...</div>;
 
-  const { customer_details, amount_total, id } = sessionData;
+  const { customer_details = {}, amount_total, id } = sessionData;
 
   return (
     <div className="confirmation">
@@ -41,16 +47,17 @@ const ConfirmationPage = () => {
 
       <p className="confirmation__email">
         A confirmation email was sent to{" "}
-        <strong>{customer_details.email}</strong>
+        <strong>{customer_details?.email || "N/A"}</strong>
       </p>
 
       <h2 className="confirmation__section-title">Shipping Info:</h2>
       <div className="confirmation__shipping">
-        <p>{customer_details.name}</p>
+        <p>{customer_details?.name || "N/A"}</p>
         <p>
-          {customer_details.address.line1}, {customer_details.address.city}
+          {customer_details?.address?.line1 || "N/A"},{" "}
+          {customer_details?.address?.city || ""}
         </p>
-        <p>{customer_details.address.postal_code}</p>
+        <p>{customer_details?.address?.postal_code || ""}</p>
       </div>
 
       <h2 className="confirmation__section-title">Total Paid:</h2>
