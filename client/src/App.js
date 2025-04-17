@@ -18,6 +18,7 @@ import Cart from "./components/Cart/Cart";
 import Success from "./pages/Success/Success";
 import Cancel from "./pages/Cancel/Cancel";
 import ConfirmationPage from "./pages/ConfirmationPage/ConfirmationPage";
+import Admin from "./pages/Admin/Admin";
 
 const App = () => {
   const contactRef = useRef(null);
@@ -58,6 +59,7 @@ const App = () => {
             <Route path="/success" element={<Success />} />
             <Route path="/cancel" element={<Cancel />} />
             <Route path="/confirmation" element={<ConfirmationPage />} />
+            <Route path="/admin" element={<Admin />} />
             <Route
               path="*"
               element={<h2 className="not-found">Page Not Found</h2>}
