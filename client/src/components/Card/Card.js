@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Card.scss";
-import stickerImg from "../../assets/images/stickers.png";
-import keychainImg from "../../assets/images/charms.png";
+import stickerImg from "../../assets/images/stickers.jpg";
+import keychainImg from "../../assets/images/charms.jpg";
 
 const Card = () => {
   return (
