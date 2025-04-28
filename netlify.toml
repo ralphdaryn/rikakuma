@@ -1,6 +1,6 @@
 [build]
-  command = "npm install --prefix client && npm run build --prefix client && npm install --prefix netlify/functions"
-  publish = "client/build"
+  command   = "npm install --prefix client && npm run build --prefix client && npm install --prefix netlify/functions"
+  publish   = "client/build"
   functions = "netlify/functions"
 
 [[redirects]]
