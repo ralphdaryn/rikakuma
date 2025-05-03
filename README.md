@@ -1,6 +1,6 @@
-🌟 Rikakuma
+# 🌟 Rikakuma
 
-Rikakuma is a real-life e-commerce web application that brings adorable keychains, stickers, and collectibles to life through a delightful shopping experience. Designed with a focus on usability, the platform offers a smooth customer journey from product discovery to secure checkout and order confirmation. The store streamlines the entire fulfillment process, making it easy for both buyers and the business owner to manage orders.
+is a real-life e-commerce web application that brings adorable keychains, stickers, and collectibles to life through a delightful shopping experience. Designed with a focus on usability, the platform offers a smooth customer journey from product discovery to secure checkout and order confirmation. The store streamlines the entire fulfillment process, making it easy for both buyers and the business owner to manage orders.
 
 This project highlights my ability to design, build, and deploy a complete e-commerce solution with real-world features and professional polish.
 
@@ -46,14 +46,13 @@ cd rikakuma
 Install dependencies:
 
 Front-end:
-
 bash
 Copy
 Edit
 cd client
 npm install
-Back-end:
 
+Back-end:
 bash
 Copy
 Edit
@@ -62,19 +61,20 @@ npm install
 Run the application:
 
 Start client:
-
 bash
 Copy
 Edit
 cd client
 npm start
-Start server:
 
+Start server:
 bash
 Copy
 Edit
 cd ../server
 npm run dev
+```
+
 🖥️ Usage
 
 Browse through the sticker and keychain collection
