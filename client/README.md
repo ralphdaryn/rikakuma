@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+🌟 Rikakuma
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Rikakuma is a real-life e-commerce web application that brings adorable keychains, stickers, and collectibles to life through a delightful shopping experience. Designed with a focus on usability, the platform offers a smooth customer journey from product discovery to secure checkout and order confirmation. The store streamlines the entire fulfillment process, making it easy for both buyers and the business owner to manage orders.
 
-## Available Scripts
+This project highlights my ability to design, build, and deploy a complete e-commerce solution with real-world features and professional polish.
 
-In the project directory, you can run:
+🚀 Live Demo  
+👉 **Live Site:** [www.rikakuma.ca](https://www.rikakuma.ca)  
+👉 **GitHub Repository:** [https://github.com/ralphdaryn/rikakuma](https://github.com/ralphdaryn/rikakuma)
 
-### `npm start`
+📖 Overview  
+Rikakuma allows users to browse a curated selection of products, view detailed pages, manage their shopping cart, and complete orders with ease. Upon checkout, customers receive confirmation emails while the business owner gets order data and shipping label generation ready for fulfillment. The platform is responsive, making it accessible across mobile, tablet, and desktop devices.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+🌟 Key Features  
+- 🛒 Clean and responsive product browsing  
+- 🧾 Add-to-cart functionality and checkout flow  
+- 💳 Secure payment integration  
+- 📦 Automatic shipping label generation  
+- 📧 Email confirmation after purchase  
+- 🛠️ Order management via a lightweight admin system  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+🛠 Tech Stack  
 
-### `npm test`
+**Front-End:**  
+- Responsive design with clean UI/UX  
+- Product display and cart management  
+- Checkout interface  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Back-End:**  
+- Order processing and shipping integration  
+- Email notification system  
+- Data management and storage  
 
-### `npm run build`
+**Deployment & Tools:**  
+- Netlify for front-end hosting  
+- Serverless functions for backend logic  
+- Git / GitHub for version control  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+📋 Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Clone the repository:
+```bash
+git clone https://github.com/ralphdaryn/rikakuma.git
+cd rikakuma
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Install dependencies:
 
-### `npm run eject`
+Front-end:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+bash
+Copy
+Edit
+cd client
+npm install
+Back-end:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+bash
+Copy
+Edit
+cd ../server
+npm install
+Run the application:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Start client:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+bash
+Copy
+Edit
+cd client
+npm start
+Start server:
 
-## Learn More
+bash
+Copy
+Edit
+cd ../server
+npm run dev
+🖥️ Usage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Browse through the sticker and keychain collection
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Add products to your cart and proceed to checkout
 
-### Code Splitting
+Complete payment and receive email confirmation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Orders are automatically processed for shipping
 
-### Analyzing the Bundle Size
+📡 API Endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+GET /api/products — Retrieve all product listings
 
-### Making a Progressive Web App
+POST /api/orders — Create a new order
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+GET /api/orders — Fetch all orders (admin)
 
-### Advanced Configuration
+POST /api/email — Send confirmation email
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+POST /api/shipping — Generate shipping label
 
-### Deployment
+📧 Contact
+Have any questions or feedback? Reach out!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+GitHub: ralphdaryn
 
-### `npm run build` fails to minify
+Email: ralphdarync@gmail.com
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+LinkedIn: linkedin.com/in/ralphdaryn
+
+💬 Closing Note
+Rikakuma is more than just an online store—it's a fully integrated e-commerce experience that reflects my passion for building clean, intuitive, and real-world applications. Thank you for checking it out and I’d love to hear your thoughts!
